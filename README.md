@@ -1,6 +1,7 @@
 This is where your group will put your project, the Next Big Thing
 in apps!
 
+<<<<<<< HEAD
 ## General Requirements
 
 You must implement the project in Swift, using SwiftUI for the View.
@@ -30,6 +31,8 @@ You will need to submit the following things:
 
 See below for details about these.
 
+=======
+>>>>>>> a2b74c8 (added more description of what's expected)
 ## How to Submit
 
 Your project will be a series of commits, starting with a project proposal.
