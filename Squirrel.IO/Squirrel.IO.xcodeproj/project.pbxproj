@@ -397,6 +397,7 @@
 			files = (
 				2068833B29B1440F00B33E07 /* ContentView.swift in Sources */,
 				3806939B29B7048500E503B6 /* LoadAnimation.swift in Sources */,
+				20B8869029BABB5900EA71AC /* LandingPage.swift in Sources */,
 				3806939D29B7061A00E503B6 /* LaunchScreen.swift in Sources */,
 				3806938D29B6F1BC00E503B6 /* ImageContentView.swift in Sources */,
 				20B886A729BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
@@ -408,6 +409,8 @@
 				20B886AF29BFCB0200EA71AC /* SignupPage.swift in Sources */,
 				3806938F29B6F2FA00E503B6 /* PostView.swift in Sources */,
 				3806939329B6FE2A00E503B6 /* FeedScrollView.swift in Sources */,
+				20B8869C29BEC25A00EA71AC /* SignIn.swift in Sources */,
+				20B8869429BAC1D900EA71AC /* SignUp.swift in Sources */,
 				3806938B29B6F17400E503B6 /* ImageHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +423,7 @@
 				20B886AC29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
 				20B886B029BFCB0200EA71AC /* SignupPage.swift in Sources */,
 				2068834A29B1441100B33E07 /* Squirrel_IOTests.swift in Sources */,
+				20B8869D29BEC25A00EA71AC /* SignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
