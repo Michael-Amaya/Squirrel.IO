@@ -9,7 +9,15 @@ import SwiftUI
 
 struct AccountPage: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color.yellow.ignoresSafeArea()
+            VStack(spacing: 50) {
+                AccountHeaderView()
+                AccountView()
+                Spacer()
+            }
+        }
+        
     }
 }
 
