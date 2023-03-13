@@ -14,13 +14,23 @@ import SwiftUI
 
 struct HomePage: View {
     var body: some View {
+        ZStack {
+            Color.yellow.ignoresSafeArea()
+            TabView {
+                VStack(spacing: 0){
+                    HomeHeaderView()
+                    
+                    FeedScrollView()
+                    
+                }
+                    .tabItem {Image(systemName: "house")}
+                    .toolbarBackground(Color.yellow, for: .tabBar)
         
-        VStack(spacing: 0){
-            HomeHeaderView()
-            
-            FeedScrollView()
+                AccountPage()
+                    .tabItem {Image(systemName: "person.crop.circle")}
+                    .toolbarBackground(Color.yellow, for: .tabBar)
+            }
         }
-
     }
 }
 

@@ -41,6 +41,18 @@
 		3806939B29B7048500E503B6 /* LoadAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3806939A29B7048500E503B6 /* LoadAnimation.swift */; };
 		3806939D29B7061A00E503B6 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3806939C29B7061A00E503B6 /* LaunchScreen.swift */; };
 		38A6A69929B5D18A00539900 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A6A69829B5D18A00539900 /* SettingsPage.swift */; };
+		686AD64829BFEEB00086440F /* AccountContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64729BFEEB00086440F /* AccountContentView.swift */; };
+		686AD64929BFEEB00086440F /* AccountContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64729BFEEB00086440F /* AccountContentView.swift */; };
+		686AD64A29BFEEB00086440F /* AccountContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64729BFEEB00086440F /* AccountContentView.swift */; };
+		686AD64C29BFEEC00086440F /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64B29BFEEC00086440F /* AccountView.swift */; };
+		686AD64D29BFEEC00086440F /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64B29BFEEC00086440F /* AccountView.swift */; };
+		686AD64E29BFEEC00086440F /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64B29BFEEC00086440F /* AccountView.swift */; };
+		686AD65029BFEED20086440F /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64F29BFEED20086440F /* AccountHeaderView.swift */; };
+		686AD65129BFEED20086440F /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64F29BFEED20086440F /* AccountHeaderView.swift */; };
+		686AD65229BFEED20086440F /* AccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64F29BFEED20086440F /* AccountHeaderView.swift */; };
+		686AD65529BFF0000086440F /* AccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD65429BFF0000086440F /* AccountPage.swift */; };
+		686AD65629BFF0000086440F /* AccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD65429BFF0000086440F /* AccountPage.swift */; };
+		686AD65729BFF0000086440F /* AccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD65429BFF0000086440F /* AccountPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +96,10 @@
 		3806939A29B7048500E503B6 /* LoadAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAnimation.swift; sourceTree = "<group>"; };
 		3806939C29B7061A00E503B6 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		38A6A69829B5D18A00539900 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
+		686AD64729BFEEB00086440F /* AccountContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountContentView.swift; sourceTree = "<group>"; };
+		686AD64B29BFEEC00086440F /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		686AD64F29BFEED20086440F /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
+		686AD65429BFF0000086440F /* AccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +206,7 @@
 		3806937D29B6E1D400E503B6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				686AD64629BFEE320086440F /* AccountComponents */,
 				20B886A529BFCA9A00EA71AC /* LandingPage */,
 				3806939929B7044D00E503B6 /* LaunchScreen */,
 				3806939429B701E200E503B6 /* HomeComponents */,
@@ -237,6 +254,7 @@
 		3886F51E29B5CDE200293D7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				686AD65329BFEFEF0086440F /* AccountPage */,
 				3806938129B6E2FF00E503B6 /* HomeFeedPage */,
 				3886F51F29B5CEE300293D7F /* AccountSettingsPage */,
 			);
@@ -249,6 +267,24 @@
 				38A6A69829B5D18A00539900 /* SettingsPage.swift */,
 			);
 			path = AccountSettingsPage;
+			sourceTree = "<group>";
+		};
+		686AD64629BFEE320086440F /* AccountComponents */ = {
+			isa = PBXGroup;
+			children = (
+				686AD64729BFEEB00086440F /* AccountContentView.swift */,
+				686AD64B29BFEEC00086440F /* AccountView.swift */,
+				686AD64F29BFEED20086440F /* AccountHeaderView.swift */,
+			);
+			path = AccountComponents;
+			sourceTree = "<group>";
+		};
+		686AD65329BFEFEF0086440F /* AccountPage */ = {
+			isa = PBXGroup;
+			children = (
+				686AD65429BFF0000086440F /* AccountPage.swift */,
+			);
+			path = AccountPage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,21 +433,22 @@
 			files = (
 				2068833B29B1440F00B33E07 /* ContentView.swift in Sources */,
 				3806939B29B7048500E503B6 /* LoadAnimation.swift in Sources */,
-				20B8869029BABB5900EA71AC /* LandingPage.swift in Sources */,
 				3806939D29B7061A00E503B6 /* LaunchScreen.swift in Sources */,
 				3806938D29B6F1BC00E503B6 /* ImageContentView.swift in Sources */,
+				686AD64C29BFEEC00086440F /* AccountView.swift in Sources */,
 				20B886A729BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
 				3806937F29B6E28700E503B6 /* HomeHeaderView.swift in Sources */,
 				20B886AB29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
 				2068833929B1440F00B33E07 /* Squirrel_IOApp.swift in Sources */,
+				686AD65029BFEED20086440F /* AccountHeaderView.swift in Sources */,
 				3806939129B6FDF200E503B6 /* HomePage.swift in Sources */,
 				38A6A69929B5D18A00539900 /* SettingsPage.swift in Sources */,
 				20B886AF29BFCB0200EA71AC /* SignupPage.swift in Sources */,
 				3806938F29B6F2FA00E503B6 /* PostView.swift in Sources */,
+				686AD65529BFF0000086440F /* AccountPage.swift in Sources */,
 				3806939329B6FE2A00E503B6 /* FeedScrollView.swift in Sources */,
-				20B8869C29BEC25A00EA71AC /* SignIn.swift in Sources */,
-				20B8869429BAC1D900EA71AC /* SignUp.swift in Sources */,
 				3806938B29B6F17400E503B6 /* ImageHeaderView.swift in Sources */,
+				686AD64829BFEEB00086440F /* AccountContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,11 +456,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				686AD64D29BFEEC00086440F /* AccountView.swift in Sources */,
 				20B886A829BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
 				20B886AC29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
 				20B886B029BFCB0200EA71AC /* SignupPage.swift in Sources */,
+				686AD65129BFEED20086440F /* AccountHeaderView.swift in Sources */,
 				2068834A29B1441100B33E07 /* Squirrel_IOTests.swift in Sources */,
-				20B8869D29BEC25A00EA71AC /* SignIn.swift in Sources */,
+				686AD65629BFF0000086440F /* AccountPage.swift in Sources */,
+				686AD64929BFEEB00086440F /* AccountContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +473,11 @@
 			files = (
 				20B886AD29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
 				2068835429B1441100B33E07 /* Squirrel_IOUITests.swift in Sources */,
+				686AD64A29BFEEB00086440F /* AccountContentView.swift in Sources */,
+				686AD65229BFEED20086440F /* AccountHeaderView.swift in Sources */,
 				20B886A929BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
+				686AD65729BFF0000086440F /* AccountPage.swift in Sources */,
+				686AD64E29BFEEC00086440F /* AccountView.swift in Sources */,
 				2068835629B1441100B33E07 /* Squirrel_IOUITestsLaunchTests.swift in Sources */,
 				20B886B129BFCB0200EA71AC /* SignupPage.swift in Sources */,
 			);
