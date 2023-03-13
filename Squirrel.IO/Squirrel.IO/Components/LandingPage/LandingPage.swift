@@ -6,65 +6,49 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+
+
+enum AuthLocation {
+    case login
+    case register
+}
+
+enum AuthorizationStatus {
+    case authenticated
+    case unauthenticated
+    case authenticating
+    case failed
+}
+
+class AuthStatus: ObservableObject {
+    @Published var current_status:AuthorizationStatus = .unauthenticated
+}
+
+class UserInfo: ObservableObject {
+    @Published var email: String = ""
+    @Published var user: User?
+}
 
 struct LandingPage: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
     
-    @State private var showRegister: Bool = false
+    @State private var current_page: [AuthLocation] = []
+
     
     var body: some View {
-        if showRegister {
-            SignUp()
-        } else {
+        NavigationStack(path:$current_page) {
             VStack {
-                VStack{
-                    Text("Please Login").font(.title).padding()
-                    HStack {
-                        Text("Username:")
-                        TextField("User name (email address)", text: $username)
-                            .disableAutocorrection(true)
-                            .border(.primary)
-                    }.padding(.horizontal)
-                    HStack {
-                        Text("Password")
-                        TextField("Password", text: $password)
-                            .disableAutocorrection(true)
-                            .border(.primary)
-                    }.padding(.horizontal)
-    //                Button{
-    //                    //action
-    //                }label: {
-    //                    Text("Login")
-    //                    //will be report ...
-    //                    Rectangle()
-    //                    .frame(width: 30, height: 30)
-    //                    .foregroundColor(.blue)
-    //                }
-                    HStack {
-                        Button("Login", action: perform_login)
-                            .border(.primary)
-                        Button("Register", action: perform_register)
-                            .border(.primary)
-                        Button("Forgot Password", action: perform_forgot_password)
-                            .border(.primary)
-                    }
+                NavigationLink("Login", value: AuthLocation.login).navigationTitle("Welcome to Squirrel.IO")
+                NavigationLink("Register", value: AuthLocation.register)
+                
+            }.navigationDestination(for:AuthLocation.self) { page in
+                switch page {
+                case .login: SignIn(current_page: $current_page).environmentObject(AuthStatus()).environmentObject(UserInfo())
+                case .register: SignUp(current_page: $current_page).environmentObject(AuthStatus()).environmentObject(UserInfo())
                 }
             }
         }
-        
     }
-    
-    func perform_register() {
-        showRegister = true
-    }
-}
-
-func perform_login() {
-    
-}
-
-func perform_forgot_password() {
     
 }
 

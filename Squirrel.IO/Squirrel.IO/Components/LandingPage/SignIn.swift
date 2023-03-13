@@ -1,38 +1,37 @@
 //
-//  SignUp.swift
+//  SignIn.swift
 //  Squirrel.IO
 //
-//  Created by Michael Amaya on 3/9/23.
+//  Created by Michael Amaya on 3/12/23.
 //
 
 import SwiftUI
 import FirebaseAuth
 
-struct SignUp: View {
+
+struct SignIn: View {
     @Binding var current_page: [AuthLocation]
     @EnvironmentObject var auth_status: AuthStatus
     
     var body: some View {
         if auth_status.current_status != .authenticated {
-            RegisterView()
+            Login_View()
         } else if auth_status.current_status == .authenticated {
             HomePage().navigationBarBackButtonHidden(true)
         }
     }
 }
 
-struct RegisterView: View {
+struct Login_View: View {
     @EnvironmentObject var auth_status: AuthStatus
     @EnvironmentObject var user_info: UserInfo
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var repeat_password: String = ""
-    @State private var passwords_match:Bool = true
     
     var body: some View {
         VStack {
-            VStack {
-                Text("Sign Up!").font(.title).padding()
+            VStack{
+                Text("Please Login").font(.title).padding()
                 HStack {
                     Text("Username:")
                     TextField("User name (email address)", text: $username)
@@ -41,29 +40,19 @@ struct RegisterView: View {
                         .autocapitalization(.none)
                 }.padding(.horizontal)
                 HStack {
-                    Text("Password:")
+                    Text("Password")
                     TextField("Password", text: $password)
                         .disableAutocorrection(true)
                         .border(.primary)
                         .autocapitalization(.none)
                 }.padding(.horizontal)
                 HStack {
-                    Text("Repeat Password:")
-                    TextField("Repeat Password", text: $repeat_password)
-                        .disableAutocorrection(true)
+                    Button("Login", action: perform_login)
                         .border(.primary)
-                        .autocapitalization(.none)
-                }.padding(.horizontal)
-                Button("Register", action: perform_register)
-                    .border(.primary)
-                
-                if !passwords_match {
-                    Text("The passwords do not match!").foregroundColor(.red)
                 }
                 
                 if auth_status.current_status == .failed {
-                    Text("Failed to create user! Note, the email must follow the email pattern, and passwords must be at least 6 characters. The email might also be taken..")
-                        .foregroundColor(.red).padding()
+                    Text("The user information was incorrect!").foregroundColor(.red)
                 } else if auth_status.current_status == .authenticating {
                     ProgressView().progressViewStyle(CircularProgressViewStyle())
                 }
@@ -71,20 +60,16 @@ struct RegisterView: View {
         }
     }
     
-    func perform_register() {
+    func perform_login() {
         Task {
-            if password == repeat_password {
-                await signUpWithEmail()
-            } else {
-                passwords_match = false
-            }
+            await signInWithEmail()
         }
     }
     
-    func signUpWithEmail() async {
+    func signInWithEmail() async {
         auth_status.current_status = .authenticating
         do {
-            let result = try await Auth.auth().createUser(withEmail: username, password: password)
+            let result = try await Auth.auth().signIn(withEmail: username, password: password)
             user_info.user = result.user
             print("User \(result.user.uid) signed in")
             auth_status.current_status = .authenticated
@@ -93,18 +78,20 @@ struct RegisterView: View {
             auth_status.current_status = .failed
         }
     }
+
 }
 
-struct Dumb_SignUp_Wrapper : View {
+struct Dumb_SignIn_Wrapper : View {
     @State private var current_page: [AuthLocation] = []
     
     var body: some View {
-        SignUp(current_page: $current_page)
+        SignIn(current_page: $current_page)
     }
 }
 
-struct SignUp_Previews: PreviewProvider {
+struct SignIn_Previews: PreviewProvider {
+    @State private var current_page: [AuthLocation] = []
     static var previews: some View {
-        Dumb_SignUp_Wrapper().environmentObject(AuthStatus())
+        Dumb_SignIn_Wrapper().environmentObject(AuthStatus())
     }
 }
