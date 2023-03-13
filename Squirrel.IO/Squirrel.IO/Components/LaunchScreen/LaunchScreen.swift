@@ -21,7 +21,7 @@ struct LaunchScreen: View {
     var body: some View {
         
         if isActive{
-            LoginPage()
+            LoginPage().environmentObject(AuthStatus()).environmentObject(UserInfo())
             // HomePage()          //display home page if finally active
         }else{
             ZStack{

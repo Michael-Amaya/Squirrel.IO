@@ -6,8 +6,44 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+
+
+// My changes
+enum AuthorizationStatus {
+    case authenticated
+    case unauthenticated
+    case authenticating
+    case failed
+}
+
+class AuthStatus: ObservableObject {
+    @Published var current_status:AuthorizationStatus = .unauthenticated
+}
+
+class UserInfo: ObservableObject {
+    @Published var email: String = ""
+    @Published var user: User?
+}
 
 struct LoginPage: View {
+    @EnvironmentObject var auth_status: AuthStatus
+    
+    var body: some View {
+        if auth_status.current_status != .authenticated {
+            LoginPageView().environmentObject(auth_status)
+        } else if auth_status.current_status == .authenticated {
+            HomePage()
+        }
+    }
+}
+
+
+// end my changes
+
+struct LoginPageView: View {
+    @EnvironmentObject var auth_status: AuthStatus
+    @EnvironmentObject var user_info: UserInfo
     @State var usernameText: String = String()
     @State var passwordText: String = String()
     
@@ -20,9 +56,9 @@ struct LoginPage: View {
                     .bold()
                     .foregroundColor(.black.opacity(0.9))
                 VStack {
-                    TextField("Username", text:$usernameText)
+                    TextField("Username", text:$usernameText).autocorrectionDisabled(true).autocapitalization(.none)
                     SecureField("Password", text:$passwordText)
-                    Button("Log in", action: {}).frame(minWidth: 0, maxWidth: .infinity).buttonStyle(.borderedProminent)
+                    Button("Log in", action: perform_login).frame(minWidth: 0, maxWidth: .infinity).buttonStyle(.borderedProminent)
                 }.textFieldStyle(RoundedBorderTextFieldStyle())
                     .frame(width: 300, alignment: .center)
                     .padding()
@@ -53,6 +89,25 @@ struct LoginPage: View {
                     }
                 }.padding()
             }
+        }
+    }
+    
+    func perform_login() {
+        Task {
+            await signInWithEmail()
+        }
+    }
+    
+    func signInWithEmail() async {
+        auth_status.current_status = .authenticating
+        do {
+            let result = try await Auth.auth().signIn(withEmail: usernameText, password: passwordText)
+            user_info.user = result.user
+            print("User \(result.user.uid) signed in")
+            auth_status.current_status = .authenticated
+        } catch {
+            print(error)
+            auth_status.current_status = .failed
         }
     }
 }
