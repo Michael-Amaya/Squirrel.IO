@@ -21,7 +21,8 @@ struct LaunchScreen: View {
     var body: some View {
         
         if isActive{
-            HomePage()          //display home page if finally active
+            LoginPage()
+            // HomePage()          //display home page if finally active
         }else{
             ZStack{
                 
