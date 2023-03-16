@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20316EE029C29057001D27A4 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 20316EDF29C29057001D27A4 /* GoogleSignIn */; };
+		20316EE229C29057001D27A4 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 20316EE129C29057001D27A4 /* GoogleSignInSwift */; };
 		2068833929B1440F00B33E07 /* Squirrel_IOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2068833829B1440F00B33E07 /* Squirrel_IOApp.swift */; };
 		2068833B29B1440F00B33E07 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2068833A29B1440F00B33E07 /* ContentView.swift */; };
 		2068833D29B1441100B33E07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2068833C29B1441100B33E07 /* Assets.xcassets */; };
@@ -73,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20316EE329C29127001D27A4 /* Squirrel-IO-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Squirrel-IO-Info.plist"; sourceTree = SOURCE_ROOT; };
+		20316EE429C29A0D001D27A4 /* Squirrel.IO.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Squirrel.IO.entitlements; sourceTree = "<group>"; };
 		2068833529B1440F00B33E07 /* Squirrel.IO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Squirrel.IO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2068833829B1440F00B33E07 /* Squirrel_IOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squirrel_IOApp.swift; sourceTree = "<group>"; };
 		2068833A29B1440F00B33E07 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,9 +114,11 @@
 				20B8868D29BAADD800EA71AC /* FirebaseDatabaseSwift in Frameworks */,
 				20B8868B29BAADD800EA71AC /* FirebaseDatabase in Frameworks */,
 				20B8868529BAADD800EA71AC /* FirebaseAnalyticsSwift in Frameworks */,
+				20316EE229C29057001D27A4 /* GoogleSignInSwift in Frameworks */,
 				20B8868729BAADD800EA71AC /* FirebaseAuth in Frameworks */,
 				20B8868329BAADD800EA71AC /* FirebaseAnalytics in Frameworks */,
 				20B8868929BAADD800EA71AC /* FirebaseAuthCombine-Community in Frameworks */,
+				20316EE029C29057001D27A4 /* GoogleSignIn in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +162,8 @@
 		2068833729B1440F00B33E07 /* Squirrel.IO */ = {
 			isa = PBXGroup;
 			children = (
+				20316EE429C29A0D001D27A4 /* Squirrel.IO.entitlements */,
+				20316EE329C29127001D27A4 /* Squirrel-IO-Info.plist */,
 				3806937D29B6E1D400E503B6 /* Components */,
 				3886F51E29B5CDE200293D7F /* View */,
 				2068833829B1440F00B33E07 /* Squirrel_IOApp.swift */,
@@ -310,6 +318,8 @@
 				20B8868829BAADD800EA71AC /* FirebaseAuthCombine-Community */,
 				20B8868A29BAADD800EA71AC /* FirebaseDatabase */,
 				20B8868C29BAADD800EA71AC /* FirebaseDatabaseSwift */,
+				20316EDF29C29057001D27A4 /* GoogleSignIn */,
+				20316EE129C29057001D27A4 /* GoogleSignInSwift */,
 			);
 			productName = Squirrel.IO;
 			productReference = 2068833529B1440F00B33E07 /* Squirrel.IO.app */;
@@ -385,6 +395,7 @@
 			mainGroup = 2068832C29B1440F00B33E07;
 			packageReferences = (
 				20B8868129BAADD800EA71AC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				20316EDE29C29057001D27A4 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 2068833629B1440F00B33E07 /* Products */;
 			projectDirPath = "";
@@ -618,11 +629,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Squirrel.IO/Squirrel.IO.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Squirrel.IO/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Squirrel-IO-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -646,11 +659,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Squirrel.IO/Squirrel.IO.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Squirrel.IO/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Squirrel-IO-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -783,6 +798,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		20316EDE29C29057001D27A4 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		20B8868129BAADD800EA71AC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -794,6 +817,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		20316EDF29C29057001D27A4 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20316EDE29C29057001D27A4 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		20316EE129C29057001D27A4 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20316EDE29C29057001D27A4 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		20B8868229BAADD800EA71AC /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 20B8868129BAADD800EA71AC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
