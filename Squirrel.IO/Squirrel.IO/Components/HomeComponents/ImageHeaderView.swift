@@ -68,7 +68,6 @@ struct ImageHeaderView: View {
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 8)
-        .background(Color.black.opacity(0.9))       //header color
     }
 }
 

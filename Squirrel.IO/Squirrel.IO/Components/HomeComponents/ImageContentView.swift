@@ -94,10 +94,8 @@ struct ImageContentView: View {
             }
             .padding(.horizontal, 6)
             .padding(.vertical, 6)
-            
-            Divider().overlay(Color.yellow)              //divider
+
         }
-        .background(Color.black.opacity(0.9))       //content color
         
         
     }
