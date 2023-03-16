@@ -30,29 +30,38 @@ struct ImageContentView: View {
          
          */
         
-        VStack(spacing: 6){
+        VStack(spacing: 4){
             
             //the image
             Image("post1")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             
-            //upvote/downvote buttons, comment button, and report button
+            //upvote/downvote buttons, comment button, and share button
             HStack{
+                
+                //number of comments
+                Text("0")
+                    .foregroundColor(.yellow)
                 
                 //comment button
                 Button{
                     //action
                 }label: {
-                    //will be comment
-                    Capsule()
-                        .stroke(Color.yellow, lineWidth: 4)
-                        .frame(width: 45, height: 30)
+                    //comment imagee
+                    Image(systemName: "text.bubble.fill")
+                        .font(.system(size: 25)).foregroundColor(.yellow)
                 }
+            
                 
-                //number of comments
-                Text("0")
-                    .foregroundColor(.yellow)
+                //location button
+                Button{
+                    //action
+                }label: {
+                    //location image
+                    Image(systemName: "location.fill")
+                        .font(.system(size: 25)).foregroundColor(.green)
+                }
                 
                 Spacer()
                 
@@ -60,10 +69,9 @@ struct ImageContentView: View {
                 Button{
                     //action
                 }label: {
-                    //will be comment
-                    Rectangle()
-                        .frame(width: 20, height: 30)
-                        .foregroundColor(.blue)
+                    //upvote button image
+                    Image(systemName: "arrow.up.square.fill")
+                        .font(.system(size: 30)).foregroundColor(.blue)
                 }
                 
                 //vote ratio
@@ -75,17 +83,16 @@ struct ImageContentView: View {
                 Button{
                     //action
                 }label: {
-                    //will be downvote art
-                    Rectangle()
-                        .frame(width: 20, height: 30)
-                        .foregroundColor(.red)
+                    //downvote button image
+                    Image(systemName: "arrow.down.square.fill")
+                        .font(.system(size: 30)).foregroundColor(.red)
                 }
                 
                 
                 
                 
             }
-            .padding(.horizontal, 10)
+            .padding(.horizontal, 6)
             .padding(.vertical, 6)
             
             Divider().overlay(Color.yellow)              //divider

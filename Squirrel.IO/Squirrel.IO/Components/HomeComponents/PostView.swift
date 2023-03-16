@@ -17,6 +17,7 @@ struct PostView: View {
         //combine the header and content to create ONE actual Squirrel.io post
         VStack(spacing: 0){
             ImageHeaderView()
+            ImageCommentView()  //not to get confused with Content!
             ImageContentView()
         }
     }

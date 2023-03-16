@@ -62,13 +62,12 @@ struct ImageHeaderView: View {
                 //action
             }label: {
                 //will be report ...
-                Circle()
-                .frame(width: 10, height: 10)
-                .foregroundColor(.white)
+                Image(systemName: "ellipsis")
+                    .font(.system(size: 20)).foregroundColor(.white)
             }
         }
         .padding(.horizontal, 10)
-        .padding(.vertical, 5)
+        .padding(.vertical, 8)
         .background(Color.black.opacity(0.9))       //header color
     }
 }

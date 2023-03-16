@@ -22,7 +22,7 @@ struct FeedScrollView: View {
                 }
             }
             
-        }
+        }.background(Color.yellow)  //scroll view background color
     }
 }
 
