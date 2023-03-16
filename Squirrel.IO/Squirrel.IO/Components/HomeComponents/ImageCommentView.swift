@@ -40,7 +40,6 @@ struct ImageCommentView: View {
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 10)
-        .background(Color.black.opacity(0.9))       //header color
     }
 }
 
