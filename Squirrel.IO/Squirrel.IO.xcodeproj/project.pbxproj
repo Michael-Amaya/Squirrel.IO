@@ -40,6 +40,7 @@
 		3806939329B6FE2A00E503B6 /* FeedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3806939229B6FE2A00E503B6 /* FeedScrollView.swift */; };
 		3806939B29B7048500E503B6 /* LoadAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3806939A29B7048500E503B6 /* LoadAnimation.swift */; };
 		3806939D29B7061A00E503B6 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3806939C29B7061A00E503B6 /* LaunchScreen.swift */; };
+		3890D43229C2DFB700C74698 /* ImageCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3890D43129C2DFB700C74698 /* ImageCommentView.swift */; };
 		38A6A69929B5D18A00539900 /* SettingsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A6A69829B5D18A00539900 /* SettingsPage.swift */; };
 		686AD64829BFEEB00086440F /* AccountContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64729BFEEB00086440F /* AccountContentView.swift */; };
 		686AD64929BFEEB00086440F /* AccountContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64729BFEEB00086440F /* AccountContentView.swift */; };
@@ -95,6 +96,7 @@
 		3806939229B6FE2A00E503B6 /* FeedScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedScrollView.swift; sourceTree = "<group>"; };
 		3806939A29B7048500E503B6 /* LoadAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadAnimation.swift; sourceTree = "<group>"; };
 		3806939C29B7061A00E503B6 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		3890D43129C2DFB700C74698 /* ImageCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCommentView.swift; sourceTree = "<group>"; };
 		38A6A69829B5D18A00539900 /* SettingsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPage.swift; sourceTree = "<group>"; };
 		686AD64729BFEEB00086440F /* AccountContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountContentView.swift; sourceTree = "<group>"; };
 		686AD64B29BFEEC00086440F /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 			children = (
 				3806937E29B6E28700E503B6 /* HomeHeaderView.swift */,
 				3806938A29B6F17400E503B6 /* ImageHeaderView.swift */,
+				3890D43129C2DFB700C74698 /* ImageCommentView.swift */,
 				3806938C29B6F1BC00E503B6 /* ImageContentView.swift */,
 				3806938E29B6F2FA00E503B6 /* PostView.swift */,
 				3806939229B6FE2A00E503B6 /* FeedScrollView.swift */,
@@ -448,6 +451,7 @@
 				686AD65529BFF0000086440F /* AccountPage.swift in Sources */,
 				3806939329B6FE2A00E503B6 /* FeedScrollView.swift in Sources */,
 				3806938B29B6F17400E503B6 /* ImageHeaderView.swift in Sources */,
+				3890D43229C2DFB700C74698 /* ImageCommentView.swift in Sources */,
 				686AD64829BFEEB00086440F /* AccountContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

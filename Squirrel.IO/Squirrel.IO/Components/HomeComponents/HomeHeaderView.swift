@@ -31,8 +31,8 @@ struct HomeHeaderView: View {
                 //action
             }label: {
                 //will be camera
-                Rectangle()
-                .frame(width: 20, height: 20)
+                Image(systemName: "camera.fill")
+                    .font(.system(size: 30))
             }
             
             
