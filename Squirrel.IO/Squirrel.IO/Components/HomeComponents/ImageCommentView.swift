@@ -29,7 +29,7 @@ struct ImageCommentView: View {
             Text("Testing long user caption that doesnt go over line")
                 .font(.system(size: 20))
                 .bold()
-                .foregroundColor(.yellow)
+                .foregroundColor(.white)
                 .opacity(0.8)
                 .multilineTextAlignment(.leading)
             
