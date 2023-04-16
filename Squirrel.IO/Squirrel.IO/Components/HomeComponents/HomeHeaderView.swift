@@ -37,9 +37,12 @@ struct HomeHeaderView: View {
             
             
         }
-        .padding(.vertical, 20)             //vertical padding for hstack
+        .padding(.vertical, 10)             //vertical padding for hstack
         .padding(.horizontal, 15)           //horizontal padding for hstack
-        .background(Color.yellow)           //header color
+        .background{
+            LinearGradient(gradient: Gradient(colors: [.orange.opacity(0.7), .yellow]), startPoint: .topLeading, endPoint: .bottomLeading)
+                .ignoresSafeArea()
+        }           //header color
     }
 }
 

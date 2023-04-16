@@ -45,7 +45,7 @@ struct ImageHeaderView: View {
                 Text("Username1")
                     .bold()
                     .font(.system(size: 20))
-                    .foregroundColor(.yellow)
+                    .foregroundColor(.white)
                 
                 //location
                 Text("Location")
