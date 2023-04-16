@@ -11,10 +11,10 @@ struct AccountPage: View {
     var body: some View {
         ZStack {
             Color.yellow.ignoresSafeArea()
-            VStack(spacing: 50) {
+            VStack(spacing:10) {
                 AccountHeaderView()
                 AccountView()
-                Spacer()
+                AccountsListView()
             }
         }
     }

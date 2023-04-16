@@ -18,6 +18,8 @@ struct AccountContentView: View {
                 .bold()
                 .font(.system(size: 30))
         }
+        .padding(.vertical, 5)             //vertical padding for hstack
+        .padding(.horizontal, 15)           //horizontal padding for
     }
 }
 
