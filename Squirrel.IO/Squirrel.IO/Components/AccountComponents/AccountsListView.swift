@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct AccountsListView: View {
+    
+    //variable to hold if user clicked Log Out button
+    @State private var signOutAlert = false
+    
     var body: some View {
         NavigationView{
             List{
                 
+                //personal menu
                 Section(header: Text("Personal")){
                     
                     //currently buttons only work on text
@@ -20,9 +25,17 @@ struct AccountsListView: View {
                     } label: {
                         Text("Edit Profile")
                     }.buttonStyle(.borderless)
+                    
+                    Button{
+                        
+                    } label: {
+                        Text("My Posts")
+                    }.buttonStyle(.borderless)
+                    
                         
                 }
                 
+                //community menu
                 Section(header: Text("Community")){
                     Link(
                         "Send Feedback",
@@ -40,11 +53,27 @@ struct AccountsListView: View {
                 }
         
                 
+                //Log out button
                 Button{
-                    
+                    signOutAlert = true
                 } label: {
                     Text("Log Out").foregroundColor(.red)
-                }.buttonStyle(.borderless)
+                }
+                .buttonStyle(.borderless)
+                .alert(isPresented: $signOutAlert){
+                    Alert(
+                        title: Text("Log Out"),
+                        message: Text("Are you sure you want to log out?"),
+                        primaryButton: .destructive(Text("Log Out")){
+                            //log out action
+                            print("Logging out...")
+                        },
+                        secondaryButton: .cancel()
+                            
+                    
+                    
+                    )
+                }
             }
             .listStyle(.grouped)
             
@@ -53,6 +82,8 @@ struct AccountsListView: View {
         
         
     }
+    
+    
 }
 
 struct AccountsListView_Previews: PreviewProvider {

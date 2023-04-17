@@ -12,7 +12,12 @@
 import SwiftUI
 
 struct HomeHeaderView: View {
+    
+    @State private var showNewPostView = false
+    
+    
     var body: some View {
+        
         HStack{
             
             //text and logo
@@ -28,11 +33,14 @@ struct HomeHeaderView: View {
             
             //camera button
             Button{
-                //action
+                showNewPostView.toggle()
             }label: {
                 //will be camera
-                Image(systemName: "camera.fill")
+                Image(systemName: "plus.app.fill")
                     .font(.system(size: 30))
+            }
+            .fullScreenCover(isPresented: $showNewPostView){
+                NewPostView()
             }
             
             

@@ -12,7 +12,7 @@ struct AccountPage: View {
         ZStack {
             Color.yellow.ignoresSafeArea()
             VStack(spacing:10) {
-                AccountHeaderView()
+                //AccountHeaderView()           got rid of upper left Log Out
                 AccountView()
                 AccountsListView()
             }
