@@ -52,7 +52,7 @@ struct SignupPageView: View {
                 Text("Failed to create user! Note, the email must follow the email pattern, and passwords must be at least 6 characters. The email might also be taken..")
                     .foregroundColor(.red).padding()
             }
-        }
+        }.onAppear(perform: { auth_status.current_status = .unauthenticated })
     }
     
     func perform_register() {

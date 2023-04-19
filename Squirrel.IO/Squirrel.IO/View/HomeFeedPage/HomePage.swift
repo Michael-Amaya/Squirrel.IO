@@ -13,6 +13,8 @@
 import SwiftUI
 
 struct HomePage: View {
+    @EnvironmentObject var auth_status: AuthStatus
+    
     var body: some View {
         
         TabView {
@@ -21,7 +23,7 @@ struct HomePage: View {
             HomeAndHeader()
                 .tabItem {Image(systemName: "house")}
     
-            AccountPage()
+            AccountPage().environmentObject(auth_status)
                 .tabItem {Image(systemName: "person.crop.circle")}
         }
         //currently tab background not saving??
@@ -40,6 +42,6 @@ struct HomePage: View {
 
 struct HomePage_Previews: PreviewProvider {
     static var previews: some View {
-        HomePage()
+        HomePage().environmentObject(AuthStatus())
     }
 }

@@ -6,8 +6,22 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct AccountsListView: View {
+    @EnvironmentObject var auth_status: AuthStatus
+    
+    var body: some View {
+        if auth_status.current_status == .authenticated {
+            AccountsListViewSecond().environmentObject(auth_status)
+        } else {
+            LoginPage().environmentObject(auth_status)
+        }
+    }
+}
+
+struct AccountsListViewSecond: View {
+    @EnvironmentObject var auth_status: AuthStatus
     
     //variable to hold if user clicked Log Out button
     @State private var signOutAlert = false
@@ -65,8 +79,12 @@ struct AccountsListView: View {
                         title: Text("Log Out"),
                         message: Text("Are you sure you want to log out?"),
                         primaryButton: .destructive(Text("Log Out")){
-                            //log out action
-                            print("Logging out...")
+                            do {
+                                try Auth.auth().signOut()
+                                auth_status.current_status = .unauthenticated
+                            } catch let signOutError as NSError {
+                                print("Error logging out")
+                            }
                         },
                         secondaryButton: .cancel()
                             
@@ -88,6 +106,6 @@ struct AccountsListView: View {
 
 struct AccountsListView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountsListView()
+        AccountsListView().environmentObject(AuthStatus())
     }
 }

@@ -17,7 +17,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
     // EMULATOR STUFF: Uncomment to enable firebase emulator
-    Auth.auth().useEmulator(withHost: "localhost", port: 9099)
+    // Auth.auth().useEmulator(withHost: "localhost", port: 9099)
 
     return true
   }

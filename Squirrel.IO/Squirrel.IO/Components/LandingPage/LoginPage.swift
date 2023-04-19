@@ -38,7 +38,7 @@ struct LoginPage: View {
         if auth_status.current_status != .authenticated {
             LoginPageView().environmentObject(auth_status)
         } else if auth_status.current_status == .authenticated {
-            HomePage()
+            HomePage().environmentObject(auth_status)
         }
     }
 }
