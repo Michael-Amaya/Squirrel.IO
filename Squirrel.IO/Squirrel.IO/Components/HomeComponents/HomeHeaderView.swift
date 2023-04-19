@@ -12,7 +12,12 @@
 import SwiftUI
 
 struct HomeHeaderView: View {
+    
+    @State private var showNewPostView = false
+    
+    
     var body: some View {
+        
         HStack{
             
             //text and logo
@@ -28,18 +33,24 @@ struct HomeHeaderView: View {
             
             //camera button
             Button{
-                //action
+                showNewPostView.toggle()
             }label: {
                 //will be camera
-                Rectangle()
-                .frame(width: 20, height: 20)
+                Image(systemName: "plus.app.fill")
+                    .font(.system(size: 30))
+            }
+            .fullScreenCover(isPresented: $showNewPostView){
+                NewPostView()
             }
             
             
         }
-        .padding(.vertical, 20)             //vertical padding for hstack
+        .padding(.vertical, 10)             //vertical padding for hstack
         .padding(.horizontal, 15)           //horizontal padding for hstack
-        .background(Color.yellow)           //header color
+        .background{
+            LinearGradient(gradient: Gradient(colors: [.orange.opacity(0.7), .yellow]), startPoint: .topLeading, endPoint: .bottomLeading)
+                .ignoresSafeArea()
+        }           //header color
     }
 }
 

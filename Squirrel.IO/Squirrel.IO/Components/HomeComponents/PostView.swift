@@ -17,8 +17,13 @@ struct PostView: View {
         //combine the header and content to create ONE actual Squirrel.io post
         VStack(spacing: 0){
             ImageHeaderView()
+            ImageCommentView()  //not to get confused with Content!
             ImageContentView()
         }
+        .padding(.vertical, 10)
+        .background(Color(red: 0.11, green: 0.11, blue: 0.11).opacity(1))
+        
+        Divider().overlay(Color.yellow)              //divider
     }
 }
 

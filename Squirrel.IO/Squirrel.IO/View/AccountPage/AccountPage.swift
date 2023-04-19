@@ -11,10 +11,10 @@ struct AccountPage: View {
     var body: some View {
         ZStack {
             Color.yellow.ignoresSafeArea()
-            VStack(spacing: 50) {
-                AccountHeaderView()
+            VStack(spacing:10) {
+                //AccountHeaderView()           got rid of upper left Log Out
                 AccountView()
-                Spacer()
+                AccountsListView()
             }
         }
     }

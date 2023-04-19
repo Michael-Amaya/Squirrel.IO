@@ -16,8 +16,14 @@ struct AccountContentView: View {
                 .cornerRadius(200)
             Text("Clyde Kruskal")
                 .bold()
-                .font(.system(size: 30))
+                .font(.title).bold()
+            
+            Text("username1")
+                .font(.title2)
+                .foregroundColor(.gray)
         }
+        .padding(.vertical, 5)             //vertical padding for hstack
+        .padding(.horizontal, 15)           //horizontal padding for
     }
 }
 

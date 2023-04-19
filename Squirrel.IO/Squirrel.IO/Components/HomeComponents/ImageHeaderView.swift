@@ -45,7 +45,7 @@ struct ImageHeaderView: View {
                 Text("Username1")
                     .bold()
                     .font(.system(size: 20))
-                    .foregroundColor(.yellow)
+                    .foregroundColor(.white)
                 
                 //location
                 Text("Location")
@@ -62,14 +62,12 @@ struct ImageHeaderView: View {
                 //action
             }label: {
                 //will be report ...
-                Circle()
-                .frame(width: 10, height: 10)
-                .foregroundColor(.white)
+                Image(systemName: "ellipsis")
+                    .font(.system(size: 20)).foregroundColor(.white)
             }
         }
         .padding(.horizontal, 10)
-        .padding(.vertical, 5)
-        .background(Color.black.opacity(0.9))       //header color
+        .padding(.vertical, 8)
     }
 }
 

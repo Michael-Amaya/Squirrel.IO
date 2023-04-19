@@ -14,23 +14,27 @@ import SwiftUI
 
 struct HomePage: View {
     var body: some View {
-        ZStack {
-            Color.yellow.ignoresSafeArea()
-            TabView {
-                VStack(spacing: 0){
-                    HomeHeaderView()
-                    
-                    FeedScrollView()
-                    
-                }
-                    .tabItem {Image(systemName: "house")}
-                    .toolbarBackground(Color.yellow, for: .tabBar)
         
-                AccountPage()
-                    .tabItem {Image(systemName: "person.crop.circle")}
-                    .toolbarBackground(Color.yellow, for: .tabBar)
-            }
+        TabView {
+            
+            
+            HomeAndHeader()
+                .tabItem {Image(systemName: "house")}
+    
+            AccountPage()
+                .tabItem {Image(systemName: "person.crop.circle")}
         }
+        //currently tab background not saving??
+        .onAppear{
+            let appearance = UITabBarAppearance()
+            appearance.backgroundColor = UIColor(Color.yellow)
+
+            UITabBar.appearance().standardAppearance = appearance
+            
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
+        
     }
 }
 
