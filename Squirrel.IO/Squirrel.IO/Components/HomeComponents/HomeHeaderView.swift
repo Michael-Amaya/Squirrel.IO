@@ -12,7 +12,8 @@
 import SwiftUI
 
 struct HomeHeaderView: View {
-    
+    @EnvironmentObject var user_info: UserInfo
+    @EnvironmentObject var message: Message
     @State private var showNewPostView = false
     
     
@@ -40,7 +41,7 @@ struct HomeHeaderView: View {
                     .font(.system(size: 30))
             }
             .fullScreenCover(isPresented: $showNewPostView){
-                NewPostView()
+                NewPostView().environmentObject(message).environmentObject(user_info)
             }
             
             
@@ -56,6 +57,6 @@ struct HomeHeaderView: View {
 
 struct HomeHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeHeaderView()
+        HomeHeaderView().environmentObject(Message(messageType: .none, message: "")).environmentObject(UserInfo())
     }
 }

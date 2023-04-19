@@ -10,12 +10,13 @@ import FirebaseAuth
 
 struct SignupPage: View {
     @EnvironmentObject var auth_status: AuthStatus
+    @EnvironmentObject var user_info: UserInfo
     
     var body: some View {
         if auth_status.current_status != .authenticated {
-            SignupPageView()
+            SignupPageView().environmentObject(user_info).environmentObject(auth_status)
         } else if auth_status.current_status == .authenticated {
-            HomePage().navigationBarBackButtonHidden(true)
+            HomePage().environmentObject(user_info).environmentObject(auth_status).navigationBarBackButtonHidden(true)
         }
     }
     

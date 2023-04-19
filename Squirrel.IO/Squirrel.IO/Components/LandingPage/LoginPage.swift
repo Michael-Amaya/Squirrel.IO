@@ -27,18 +27,18 @@ class AuthStatus: ObservableObject {
 }
 
 class UserInfo: ObservableObject {
-    @Published var email: String = ""
     @Published var user: User?
 }
 
 struct LoginPage: View {
     @EnvironmentObject var auth_status: AuthStatus
+    @EnvironmentObject var user_info: UserInfo
     
     var body: some View {
         if auth_status.current_status != .authenticated {
-            LoginPageView().environmentObject(auth_status)
+            LoginPageView().environmentObject(auth_status).environmentObject(user_info)
         } else if auth_status.current_status == .authenticated {
-            HomePage().environmentObject(auth_status)
+            HomePage().environmentObject(auth_status).environmentObject(user_info)
         }
     }
 }
@@ -104,7 +104,7 @@ struct LoginPageView: View {
                 
                 HStack {
                     Text("Don't have an account?")
-                    NavigationLink(destination: SignupPage()) {
+                    NavigationLink(destination: SignupPage().environmentObject(user_info)) {
                         Text("Sign up")
                     }
                 }.padding()
@@ -194,6 +194,7 @@ struct LoginPageView: View {
             let result = try await Auth.auth().signIn(with: credential)
             let firebaseUser = result.user
             print("User \(firebaseUser.uid) signed in with email \(firebaseUser.email ?? "unknown")")
+            user_info.user = firebaseUser
             auth_status.current_status = .authenticated
         } catch {
             auth_status.current_status = .failed

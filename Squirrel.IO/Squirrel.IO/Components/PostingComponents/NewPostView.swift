@@ -11,6 +11,8 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct NewPostView: View {
+    @EnvironmentObject var user_info: UserInfo
+    @EnvironmentObject var message: Message
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
@@ -32,9 +34,9 @@ struct NewPostView: View {
                 Spacer()
                 Button(action: createPost) {
                     Text("Post").bold().padding(.horizontal, 3).padding(.vertical, -2)
-                }.buttonStyle(.borderedProminent).clipShape(Capsule())
+                }.buttonStyle(.borderedProminent).clipShape(Capsule()).disabled(!checkPostValid())
             }
-            .padding().disabled(!checkPostValid())
+            .padding()
             
             
             VStack{
@@ -63,7 +65,7 @@ struct NewPostView: View {
             }
         }
         .background(Color(.systemYellow)).sheet(isPresented: $showImagePicker) {
-            CameraPickView(selectedImage: self.$selectedImage, sourceType: sourceType)
+            CameraPickView(selectedImage: self.$selectedImage, sourceType: $sourceType)
         }
     }
     
@@ -92,11 +94,13 @@ struct NewPostView: View {
                 // Successful upload
                 let db = Firestore.firestore()
                 let currentUser = Auth.auth().currentUser!.uid
-                db.collection("images").document().setData(["url":path, "uploader": currentUser, "dateUploaded": Timestamp(date: Date())])
-                
-                print("Successful Upload!")
-                
-                // We need a successful upload message...
+                db.collection("images").document().setData(["url":path, "uploader": currentUser, "dateUploaded": Timestamp(date: Date()), "uploaderEmail": user_info.user?.email ?? "No email"])
+                message.message = "Successfully created post"
+                message.messageType = .success
+                presentationMode.wrappedValue.dismiss()
+            } else {
+                message.message = "Failed to create post"
+                message.messageType = .error
                 presentationMode.wrappedValue.dismiss()
             }
         }
@@ -115,6 +119,6 @@ struct NewPostView: View {
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPostView()
+        NewPostView().environmentObject(Message(messageType: .none, message: "")).environmentObject(UserInfo())
     }
 }
