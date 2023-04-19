@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
 
 struct NewPostView: View {
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var showImagePicker = false
+    @State private var selectedImage: UIImage?
+    
     @State private var caption = ""
     @Environment(\.presentationMode) var presentationMode
-    
     
     var body: some View {
         VStack{
             HStack{
-                Button{
+                Button {
                     presentationMode.wrappedValue.dismiss()
                 } label:{
                     Text("Cancel")
@@ -24,21 +30,11 @@ struct NewPostView: View {
                 }
                 
                 Spacer()
-                
-                
-                Button{
-                    print("Posting")
-                } label:{
-                    Text("Post")
-                        .bold()
-                        .padding(.horizontal, 15)
-                        .padding(.vertical, 5)
-                        .background(Color(.systemBlue))
-                        .foregroundColor(.white)
-                        .clipShape(Capsule())
-                }
+                Button(action: createPost) {
+                    Text("Post").bold().padding(.horizontal, 3).padding(.vertical, -2)
+                }.buttonStyle(.borderedProminent).clipShape(Capsule())
             }
-            .padding()
+            .padding().disabled(!checkPostValid())
             
             
             VStack{
@@ -49,8 +45,71 @@ struct NewPostView: View {
             
             
             Spacer()
+            
+            if selectedImage != nil {
+                VStack {
+                    Text("Selected Image:")
+                    Image(uiImage: selectedImage!).resizable().frame(width: 200, height: 200)
+                }
+            }
+            
+            HStack {
+                Button(action: openCamera) {
+                    Text("From Camera")
+                }.buttonStyle(.borderedProminent)
+                Button(action: openRoll) {
+                    Text("From Camera Roll")
+                }.buttonStyle(.borderedProminent)
+            }
         }
-        .background(Color(.systemYellow))
+        .background(Color(.systemYellow)).sheet(isPresented: $showImagePicker) {
+            CameraPickView(selectedImage: self.$selectedImage, sourceType: sourceType)
+        }
+    }
+    
+    func checkPostValid() -> Bool {
+        let trimmedCaption = caption.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return !trimmedCaption.isEmpty && trimmedCaption.count >= 8 && selectedImage != nil
+    }
+
+    func createPost() {
+        // No need to check if the picture and caption are valid since the post button will be disabled if they aren't
+        
+        // First upload the file
+        let storageRef = Storage.storage().reference()
+        let imageData = selectedImage!.jpegData(compressionQuality: 0.8)
+        
+        guard imageData != nil else {
+            return
+        }
+        
+        let path = "images/\(UUID().uuidString).jpg"
+        let fileRef = storageRef.child(path)
+        
+        let uploadTask = fileRef.putData(imageData!, metadata: nil) { metadata, error in
+            if error == nil && metadata != nil {
+                // Successful upload
+                let db = Firestore.firestore()
+                let currentUser = Auth.auth().currentUser!.uid
+                db.collection("images").document().setData(["url":path, "uploader": currentUser, "dateUploaded": Timestamp(date: Date())])
+                
+                print("Successful Upload!")
+                
+                // We need a successful upload message...
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+    }
+    
+    func openCamera() {
+        sourceType = .camera
+        showImagePicker.toggle()
+    }
+    
+    func openRoll() {
+        sourceType = .photoLibrary
+        showImagePicker.toggle()
     }
 }
 
