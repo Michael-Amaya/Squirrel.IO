@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct HomeAndHeader: View {
+    @EnvironmentObject var user_info: UserInfo
+    @EnvironmentObject var message: Message
+    
     var body: some View {
-        VStack(spacing: 0){
-            HomeHeaderView()
-            
-            FeedScrollView()
+        ZStack {
+            VStack(spacing: 0){
+                HomeHeaderView().environmentObject(message).environmentObject(user_info)
+                
+                FeedScrollView()
+            }
             
         }
+        
     }
 }
 
 struct HomeAndHeader_Previews: PreviewProvider {
     static var previews: some View {
-        HomeAndHeader()
+        HomeAndHeader().environmentObject(Message(messageType: .none, message: "")).environmentObject(UserInfo())
     }
 }

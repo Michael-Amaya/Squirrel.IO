@@ -10,12 +10,13 @@ import FirebaseAuth
 
 struct SignupPage: View {
     @EnvironmentObject var auth_status: AuthStatus
+    @EnvironmentObject var user_info: UserInfo
     
     var body: some View {
         if auth_status.current_status != .authenticated {
-            SignupPageView()
+            SignupPageView().environmentObject(user_info).environmentObject(auth_status)
         } else if auth_status.current_status == .authenticated {
-            HomePage().navigationBarBackButtonHidden(true)
+            HomePage().environmentObject(user_info).environmentObject(auth_status).navigationBarBackButtonHidden(true)
         }
     }
     
@@ -52,7 +53,7 @@ struct SignupPageView: View {
                 Text("Failed to create user! Note, the email must follow the email pattern, and passwords must be at least 6 characters. The email might also be taken..")
                     .foregroundColor(.red).padding()
             }
-        }
+        }.onAppear(perform: { auth_status.current_status = .unauthenticated })
     }
     
     func perform_register() {
