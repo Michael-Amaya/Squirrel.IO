@@ -29,6 +29,7 @@ struct SignupPageView: View {
     @State var usernameText: String = String()
     @State var passwordText: String = String()
     @State var confirmPasswordText: String = String()
+    @State var passwordOverlay: Bool = false
     
     var body: some View {
         VStack {
@@ -54,14 +55,35 @@ struct SignupPageView: View {
                     .foregroundColor(.red).padding()
             }
         }.onAppear(perform: { auth_status.current_status = .unauthenticated })
+            .alert(isPresented: $passwordOverlay) {
+                Alert(
+                    title: Text("Invalid Info"),
+                    message: Text("Note, the email must follow the email pattern, and passwords must be at least 6 characters."),
+                    dismissButton: .cancel(Text("Dismiss")) {
+                        passwordOverlay = false
+                    }
+                    
+                )
+            }
+    }
+    
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
     }
     
     func perform_register() {
         Task {
-            if passwordText == confirmPasswordText {
-                await signUpWithEmail()
+            if !isValidEmail(emailText) || passwordText.count < 6 {
+                passwordOverlay = true
             } else {
-                // passwords_match = false
+                if passwordText == confirmPasswordText {
+                    await signUpWithEmail()
+                } else {
+                    // passwords_match = false
+                }
             }
         }
     }
