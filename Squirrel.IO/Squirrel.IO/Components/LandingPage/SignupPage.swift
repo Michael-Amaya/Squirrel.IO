@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 struct SignupPage: View {
     @EnvironmentObject var auth_status: AuthStatus
@@ -93,7 +94,23 @@ struct SignupPageView: View {
         do {
             let result = try await Auth.auth().createUser(withEmail: emailText, password: passwordText)
             user_info.user = result.user
+            
             print("User \(result.user.uid) signed in")
+            
+            
+            let data = ["fullname": usernameText,
+                        "username": usernameText,        //temp username
+                        "email": emailText,
+                        "profileImageUrl": "images/testudo.jpg"]
+            
+            Firestore.firestore().collection("users")
+                .document(result.user.uid)
+                .setData(data){ _ in
+                    print("Uploaded user data")
+                    
+                }
+            
+            
             auth_status.current_status = .authenticated
         } catch {
             print(error)

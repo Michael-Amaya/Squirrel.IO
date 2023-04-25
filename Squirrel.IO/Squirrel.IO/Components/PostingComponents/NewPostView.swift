@@ -20,6 +20,10 @@ struct NewPostView: View {
     @State private var caption = ""
     @Environment(\.presentationMode) var presentationMode
     
+    
+    @FocusState private var isFocused: Bool
+    
+    
     var body: some View {
         VStack{
             HStack{
@@ -39,11 +43,20 @@ struct NewPostView: View {
             .padding()
             
             
+            
             VStack{
+                
                 TextField("What's new in College Park?", text: $caption, axis: .vertical)
                     .font(.title3)
+                    .focused($isFocused)
+                
             }
             .padding()
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.02){
+                    self.isFocused = true
+                }
+            }
             
             
             Spacer()
@@ -55,18 +68,56 @@ struct NewPostView: View {
                 }
             }
             
-            HStack {
-                Button(action: openCamera) {
-                    Text("From Camera")
-                }.buttonStyle(.borderedProminent)
-                Button(action: openRoll) {
-                    Text("From Camera Roll")
-                }.buttonStyle(.borderedProminent)
+            //bottom divider and buttons
+            VStack(spacing: 2){
+                Divider()
+                
+                HStack(spacing: 20){
+                    
+                    //camera
+                    Button{
+                        //action
+                        openCamera()
+                    }label: {
+                        //image button
+                        Image(systemName: "camera.fill")
+                            .font(.system(size: 25)).foregroundColor(.white)
+                    }
+                    
+                    
+                    //camera roll
+                    Button{
+                        //action
+                        openRoll()
+                    }label: {
+                        //image button
+                        Image(systemName: "photo.fill")
+                            .font(.system(size: 25)).foregroundColor(.white)
+                    }
+                    
+                    //allowing location
+                    Button{
+                        //action
+                        //NEED TO DO*****
+                    }label: {
+                        //image button
+                        Image(systemName: "location.circle")
+                            .font(.system(size: 25)).foregroundColor(.white)
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.vertical, 4)
+                .padding(.horizontal, 12)
+                
             }
+            
+            
         }
         .background(Color(.systemYellow)).sheet(isPresented: $showImagePicker) {
             CameraPickView(selectedImage: self.$selectedImage, sourceType: $sourceType)
         }
+        
     }
     
     func checkPostValid() -> Bool {

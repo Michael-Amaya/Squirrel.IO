@@ -12,6 +12,8 @@ import GoogleSignInSwift
 import FirebaseCore
 import AuthenticationServices
 import CryptoKit
+//import FirebaseFirestoreSwift
+import FirebaseFirestore
 
 
 // My changes
@@ -28,6 +30,8 @@ class AuthStatus: ObservableObject {
 
 class UserInfo: ObservableObject {
     @Published var user: User?
+    @Published var current_user: UserModel?
+    
 }
 
 struct LoginPage: View {
@@ -52,6 +56,10 @@ struct LoginPageView: View {
     @State var usernameText: String = String()
     @State var passwordText: String = String()
     @State var currentNonce: String?
+    
+    private let service = UserData()
+    
+    
     
     var body: some View {
         NavigationView {
@@ -112,6 +120,10 @@ struct LoginPageView: View {
         }
     }
     
+//    init(){
+//        self.fetchUser()
+//    }
+    
     func perform_login() {
         Task {
             await signInWithEmail()
@@ -121,7 +133,10 @@ struct LoginPageView: View {
     func perform_google_login() {
         Task {
             await signInWithGoogle()
+            
+            //service.fetchUser()
         }
+        
     }
     
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest)  {
@@ -195,6 +210,58 @@ struct LoginPageView: View {
             let firebaseUser = result.user
             print("User \(firebaseUser.uid) signed in with email \(firebaseUser.email ?? "unknown")")
             user_info.user = firebaseUser
+            
+            //*****This should only be called once if they have never signed up before**
+            //get username
+            let currentUser = Auth.auth().currentUser
+            
+            //let db = Firestore.firestore()
+            
+            if let currentUser = currentUser{
+                let data = ["fullname": currentUser.displayName,
+                            "username": currentUser.displayName,        //temp username
+                            "email": currentUser.email,
+                            "profileImageUrl": "images/testudo.jpg"]
+                
+//                DispatchQueue.main.async {
+//                    Firestore.firestore().collection("users")
+//                        .document(firebaseUser.uid)
+//                        .setData(data){ _ in
+//                            print("Uploaded user data")
+//
+//                        }
+//                }
+                
+//                db.collection("users").document(currentUser.uid).setData(data){
+//                    err in
+//                    if let err = err{
+//                        print("Error writing doc")
+//                    }else{
+//                        print("Doc successful")
+//                    }
+//                }
+//
+//                await service.fetchUser()
+                
+                Task{
+                    do{
+                        try await uploadData(withUid: firebaseUser.uid, data: data)
+
+                        await service.fetchUser(){ user in
+                            self.user_info.current_user = user
+                            
+                        }
+                    }
+
+                }
+                
+                
+                
+                
+                
+            }
+            
+            
             auth_status.current_status = .authenticated
         } catch {
             auth_status.current_status = .failed
@@ -260,6 +327,30 @@ struct LoginPageView: View {
       }.joined()
 
       return hashString
+    }
+    
+    
+    
+    
+//    func fetchUser(){
+//        guard let uid = Auth.auth().currentUser?.uid else {return}
+//
+//        service.fetchUser(withUid: uid)
+//
+//    }
+    
+    func uploadData(withUid uid: String, data: [String: Any]) async throws -> Void{
+        
+        Firestore.firestore().collection("users")
+            .document(uid)
+            .setData(data){ err in
+                if let err = err{
+                    print("Error writing doc")
+                }else{
+                    print("Document data fields successfully uploaded")
+                }
+                
+            }
     }
 
 }

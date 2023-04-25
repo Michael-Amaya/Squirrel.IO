@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AccountHeaderView: View {
+    
     @State private var logOut: Bool = false
     @State private var showAlert: Bool = false
     @State private var buttonText: String = "Logout"
