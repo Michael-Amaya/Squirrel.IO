@@ -32,6 +32,8 @@ struct SignupPageView: View {
     @State var confirmPasswordText: String = String()
     @State var passwordOverlay: Bool = false
     
+    private let service = UserData()
+    
     var body: some View {
         VStack {
             Image("logo1").resizable().aspectRatio(contentMode: .fit).frame(width: 75, height: 75).frame(height: 50)
