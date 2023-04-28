@@ -217,11 +217,16 @@ struct LoginPageView: View {
             
             //let db = Firestore.firestore()
             
+            let originalProfilePic = ["testudo1.jpg", "testudo2.jpg", "testudo3.jpg", "testudo4.jpg"]
+            
+            let firstProfilePic = originalProfilePic.randomElement()!
+            
             if let currentUser = currentUser{
+                
                 let data = ["fullname": currentUser.displayName,
                             "username": currentUser.displayName,        //temp username
                             "email": currentUser.email,
-                            "profileImageUrl": "images/testudo.jpg"]
+                            "profileImageUrl": "profileImages/" + firstProfilePic]
                 
 //                DispatchQueue.main.async {
 //                    Firestore.firestore().collection("users")

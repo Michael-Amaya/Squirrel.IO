@@ -10,32 +10,64 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import FirebaseFirestore
 
 struct ImageContentView: View {
+    
+    @ObservedObject var postedPhoto: PhotoRetrieve = PhotoRetrieve()
+    
+    let imageData: ImageModel
+    
+    //let likeRatio: Int
+    
     var body: some View {
         
         //For later use to change images and text from Firebase
-        /*
+        
          
-         var image: String
-         var numOfCommenets: Int
-         var likeRatio: int
+         //let image: String
+         //let numOfCommenets: Int
+//         let likeRatio: Int
          
-         public init(image: String, numOfComments: Int, likeRatio: int){
+//        init(image: String, numOfComments: Int, likeRatio: int){
+//
+//            self.image = image
+//            self.numOfCommnets = numOfComments
+//            self.likeRatio = likeRatio
+//         }
          
-            self.image = image
-            self.numOfCommnets = numOfComments
-            selef.likeRatio = likeRatio
-         }
          
-         */
         
         VStack(spacing: 4){
             
-            //the image
-            Image("post1")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            
+            
+                VStack(spacing: 0){
+                    
+                    if postedPhoto.retrievedImage != nil{
+                        //the image
+                        Image(uiImage: postedPhoto.retrievedImage!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
+                }
+                .onAppear{
+                    postedPhoto.retrievePhoto(imageData.url)
+
+                }
+                
+            
+            
+//            //the image
+//            Image("post1")
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+            
+            
+            
+            
+            
             
             //upvote/downvote buttons, comment button, and share button
             HStack{
@@ -76,7 +108,7 @@ struct ImageContentView: View {
                 
                 //vote ratio
                 //this should ultimately be a bool that can turn red
-                Text("0")
+                Text("\(imageData.votes)")
                     .foregroundColor(.blue)
                 
                 //downvote button
@@ -101,8 +133,9 @@ struct ImageContentView: View {
     }
 }
 
-struct ImageContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageContentView()
-    }
-}
+//struct ImageContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ImageContentView()
+//    }
+//}
+

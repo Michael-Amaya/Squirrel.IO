@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ImageCommentView: View {
+    let imageData: ImageModel
+    
     var body: some View {
         
         //For later use to change username and captions from Firebase
@@ -26,7 +28,7 @@ struct ImageCommentView: View {
         HStack(alignment: .firstTextBaseline){
             
             
-            Text("Testing long user caption that doesnt go over line")
+            Text("\(imageData.caption)")
                 .font(.system(size: 20))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.leading)
@@ -41,8 +43,8 @@ struct ImageCommentView: View {
     }
 }
 
-struct ImageCommentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageCommentView()
-    }
-}
+//struct ImageCommentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ImageCommentView()
+//    }
+//}

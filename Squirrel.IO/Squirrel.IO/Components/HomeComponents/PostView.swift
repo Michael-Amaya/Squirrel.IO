@@ -12,13 +12,16 @@
 import SwiftUI
 
 struct PostView: View {
+    let imageData: ImageModel
+    
     var body: some View {
+        
         
         //combine the header and content to create ONE actual Squirrel.io post
         VStack(spacing: 0){
-            ImageHeaderView()
-            ImageCommentView()  //not to get confused with Content!
-            ImageContentView()
+            ImageHeaderView(imageData: self.imageData)
+            ImageCommentView(imageData: self.imageData)  //not to get confused with Content!
+            ImageContentView(imageData: self.imageData)
         }
         .padding(.vertical, 10)
         .background(Color(red: 0.11, green: 0.11, blue: 0.11).opacity(1))
@@ -27,8 +30,8 @@ struct PostView: View {
     }
 }
 
-struct PostView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostView()
-    }
-}
+//struct PostView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PostView()
+//    }
+//}

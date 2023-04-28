@@ -12,6 +12,11 @@ import SwiftUI
 
 
 struct ImageHeaderView: View {
+    
+    @ObservedObject var userProfilePic: PhotoRetrieve = PhotoRetrieve()
+    
+    let imageData: ImageModel
+    
     var body: some View {
         
         
@@ -31,49 +36,65 @@ struct ImageHeaderView: View {
          
          */
         
-        HStack{
-            //profile picture
-            Image("user2")
-                .resizable()
-                .frame(width: 60, height: 60)
-                .cornerRadius(60)
-            
-            //username and location
-            VStack(alignment: .leading, spacing: 2){
+        if let user = imageData.user {
+            HStack{
                 
-                //username
-                Text("Username1")
-                    .bold()
-                    .font(.system(size: 18))
-                    .foregroundColor(.white)
+                VStack{
+
+                    if userProfilePic.retrievedImage != nil{
+                        //profile picture
+                        Image(uiImage: userProfilePic.retrievedImage!)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 60, height: 60)
+                            .clipShape(Circle())
+                    }
+                    
+                }
+                .onAppear{
+                    userProfilePic.retrievePhoto(user.profileImageUrl)
+                }
                 
-                //location
-                Text("Location")
-                    .foregroundColor(.red)
-                    .opacity(0.9)
                 
+                //username and location
+                VStack(alignment: .leading, spacing: 2){
+                    
+                    //username
+                    Text("@\(user.username)")
+                        .bold()
+                        .font(.system(size: 18))
+                        .foregroundColor(.white)
+                    
+                    //location
+                    Text("Location")
+                        .foregroundColor(.red)
+                        .opacity(0.9)
+                    
+                }
+                
+                Spacer()
+                
+                
+                //report button
+                Button{
+                    //action here
+                }label: {
+                    //will be report ...
+                    Image(systemName: "ellipsis")
+                        .font(.system(size: 20)).foregroundColor(.white)
+                }
             }
-            
-            Spacer()
-            
-            
-            //report button
-            Button{
-                //action
-            }label: {
-                //will be report ...
-                Image(systemName: "ellipsis")
-                    .font(.system(size: 20)).foregroundColor(.white)
-            }
+            .padding(.horizontal, 10)
+            .padding(.vertical, 8)
         }
-        .padding(.horizontal, 10)
-        .padding(.vertical, 8)
+        
+        
     }
 }
 
-struct ImageHeaderView_Previews: PreviewProvider {
-    static var previews: some View {
-        ImageHeaderView()
-    }
-}
+//struct ImageHeaderView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ImageHeaderView()
+//    }
+//}
 
