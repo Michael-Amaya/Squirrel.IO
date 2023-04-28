@@ -14,11 +14,13 @@ import SwiftUI
 
 struct FeedScrollView: View {
     
+    @ObservedObject var viewModel = FeedViewModel()
+    
     var body: some View {
         ScrollView{
             LazyVStack(spacing: 0){
-                ForEach(0...10, id: \.self){ _ in
-                    PostView()
+                ForEach(viewModel.img){ imgData in
+                    PostView(imageData: imgData)
                 }
             }
             

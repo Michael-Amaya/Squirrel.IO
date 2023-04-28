@@ -99,24 +99,58 @@ struct SignupPageView: View {
             
             print("User \(result.user.uid) signed in")
             
+            let currentUser = Auth.auth().currentUser
             
-            let data = ["fullname": usernameText,
-                        "username": usernameText,        //temp username
-                        "email": emailText,
-                        "profileImageUrl": "images/testudo.jpg"]
+            let originalProfilePic = ["testudo1.jpg", "testudo2.jpg", "testudo3.jpg", "testudo4.jpg"]
             
-            Firestore.firestore().collection("users")
-                .document(result.user.uid)
-                .setData(data){ _ in
-                    print("Uploaded user data")
+            let firstProfilePic = originalProfilePic.randomElement()!
+            
+            
+            if let currentUser = currentUser{
+                let data = ["fullname": usernameText,
+                            "username": usernameText,        //temp username
+                            "email": emailText,
+                            "profileImageUrl": "profileImages/" + firstProfilePic]
+                
+                Task{
+                    do{
+                        try await uploadData(withUid: currentUser.uid, data: data)
+                        
+                        await service.fetchUser(){ user in
+                            self.user_info.current_user = user
+                            
+                        }
+                    }
                     
                 }
+            }
             
+            
+//            Firestore.firestore().collection("users")
+//                .document(result.user.uid)
+//                .setData(data){ _ in
+//                    print("Uploaded user data")
+//
+//                }
             
             auth_status.current_status = .authenticated
         } catch {
             print(error)
             auth_status.current_status = .failed
         }
+    }
+    
+    func uploadData(withUid uid: String, data: [String: Any]) async throws -> Void{
+        
+        Firestore.firestore().collection("users")
+            .document(uid)
+            .setData(data){ err in
+                if let err = err{
+                    print("Error writing doc")
+                }else{
+                    print("Document data fields successfully uploaded")
+                }
+                
+            }
     }
 }
