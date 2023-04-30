@@ -12,6 +12,7 @@
 import SwiftUI
 import FirebaseStorage
 import FirebaseFirestore
+import FirebaseAuth
 
 struct ImageContentView: View {
     
@@ -19,6 +20,12 @@ struct ImageContentView: View {
     
     let imageData: ImageModel
     
+    @State private var votes: Int
+    
+    init (imageData:ImageModel) {
+        self.imageData = imageData
+        self.votes = imageData.votes
+    }
     //let likeRatio: Int
     
     var body: some View {
@@ -99,21 +106,39 @@ struct ImageContentView: View {
                 
                 //upvote button
                 Button{
+                    votes += 1
+                    let db = Firestore.firestore()
+                    db.collection("images").document("\(imageData.id!)").updateData([
+                        "votes": votes
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        }
+                    }
                     //action
                 }label: {
                     //upvote button image
                     Image(systemName: "arrow.up.square.fill")
                         .font(.system(size: 30)).foregroundColor(.blue)
                 }
-                
+//                imageData.
                 //vote ratio
                 //this should ultimately be a bool that can turn red
-                Text("\(imageData.votes)")
-                    .foregroundColor(.blue)
+                Text("\(votes)")
+                    .foregroundColor(votes >= 0 ? .blue : .red)
                 
                 //downvote button
                 Button{
+                    votes -= 1
                     //action
+                    let db = Firestore.firestore()
+                    db.collection("images").document("\(imageData.id!)").updateData([
+                        "votes": votes
+                    ]) { err in
+                        if let err = err {
+                            print("Error updating document: \(err)")
+                        }
+                    }
                 }label: {
                     //downvote button image
                     Image(systemName: "arrow.down.square.fill")
