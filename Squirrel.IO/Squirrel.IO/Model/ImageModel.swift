@@ -17,5 +17,6 @@ struct ImageModel: Identifiable, Decodable{
     let caption: String
     var votes: Int          //not a let
     
+    let location: String?
     var user: UserModel?
 }

@@ -11,6 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 
 struct NewPostView: View {
+    @EnvironmentObject var locationManager: LocationManager
     @EnvironmentObject var user_info: UserInfo
     @EnvironmentObject var message: Message
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
@@ -145,7 +146,7 @@ struct NewPostView: View {
                 // Successful upload
                 let db = Firestore.firestore()
                 let currentUser = Auth.auth().currentUser!.uid
-                db.collection("images").document().setData(["url":path, "uploader": currentUser, "dateUploaded": Timestamp(date: Date()), "uploaderEmail": user_info.user?.email ?? "No email", "caption": caption, "votes": 0])
+                db.collection("images").document().setData(["url":path, "uploader": currentUser, "dateUploaded": Timestamp(date: Date()), "uploaderEmail": user_info.user?.email ?? "No email", "caption": caption, "votes": 0, "location": locationManager.city! + ", " + locationManager.country!])
                 message.message = "Successfully created post"
                 message.messageType = .success
                 presentationMode.wrappedValue.dismiss()

@@ -73,6 +73,9 @@
 		686AD65529BFF0000086440F /* AccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD65429BFF0000086440F /* AccountPage.swift */; };
 		686AD65629BFF0000086440F /* AccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD65429BFF0000086440F /* AccountPage.swift */; };
 		686AD65729BFF0000086440F /* AccountPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD65429BFF0000086440F /* AccountPage.swift */; };
+		686BB49F29FF303F00678ADF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB49E29FF303F00678ADF /* LocationManager.swift */; };
+		686BB4A029FF303F00678ADF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB49E29FF303F00678ADF /* LocationManager.swift */; };
+		686BB4A129FF303F00678ADF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB49E29FF303F00678ADF /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +138,7 @@
 		686AD64B29BFEEC00086440F /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		686AD64F29BFEED20086440F /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
 		686AD65429BFF0000086440F /* AccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPage.swift; sourceTree = "<group>"; };
+		686BB49E29FF303F00678ADF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +364,7 @@
 			children = (
 				38EB977B29ECCFD9007DC5B6 /* NewPostView.swift */,
 				20E6FF2229F0238200F73A64 /* CameraView.swift */,
+				686BB49E29FF303F00678ADF /* LocationManager.swift */,
 			);
 			path = PostingComponents;
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 				2068833B29B1440F00B33E07 /* ContentView.swift in Sources */,
 				3806939B29B7048500E503B6 /* LoadAnimation.swift in Sources */,
 				3806939D29B7061A00E503B6 /* LaunchScreen.swift in Sources */,
+				686BB49F29FF303F00678ADF /* LocationManager.swift in Sources */,
 				38EB977729EB99F7007DC5B6 /* HomeAndHeader.swift in Sources */,
 				3806938D29B6F1BC00E503B6 /* ImageContentView.swift in Sources */,
 				38EB977C29ECCFD9007DC5B6 /* NewPostView.swift in Sources */,
@@ -580,6 +586,7 @@
 			files = (
 				686AD64D29BFEEC00086440F /* AccountView.swift in Sources */,
 				20B886A829BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
+				686BB4A029FF303F00678ADF /* LocationManager.swift in Sources */,
 				20B886AC29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
 				6845B97C29FEC382009BB916 /* UpdateLikes.swift in Sources */,
 				20B886B029BFCB0200EA71AC /* SignupPage.swift in Sources */,
@@ -597,6 +604,7 @@
 				20B886AD29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
 				2068835429B1441100B33E07 /* Squirrel_IOUITests.swift in Sources */,
 				686AD64A29BFEEB00086440F /* AccountContentView.swift in Sources */,
+				686BB4A129FF303F00678ADF /* LocationManager.swift in Sources */,
 				6845B97D29FEC382009BB916 /* UpdateLikes.swift in Sources */,
 				686AD65229BFEED20086440F /* AccountHeaderView.swift in Sources */,
 				20B886A929BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
@@ -751,6 +759,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Squirrel-IO-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera information for posting pictures";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Would you like to share location?\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -783,6 +792,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Squirrel-IO-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need camera information for posting pictures";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "\"Would you like to share location?\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

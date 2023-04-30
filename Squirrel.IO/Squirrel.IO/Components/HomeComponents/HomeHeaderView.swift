@@ -42,6 +42,7 @@ struct HomeHeaderView: View {
             }
             .fullScreenCover(isPresented: $showNewPostView){
                 NewPostView().environmentObject(message).environmentObject(user_info)
+                    .environmentObject(LocationManager())
             }
             
             
