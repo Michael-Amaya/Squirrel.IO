@@ -58,6 +58,9 @@
 		38EB977C29ECCFD9007DC5B6 /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EB977B29ECCFD9007DC5B6 /* NewPostView.swift */; };
 		38EB978129ECE965007DC5B6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 38EB978029ECE965007DC5B6 /* FirebaseFirestoreSwift */; };
 		38EB978329ECE965007DC5B6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 38EB978229ECE965007DC5B6 /* FirebaseStorage */; };
+		6845B97B29FEC382009BB916 /* UpdateLikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6845B97A29FEC382009BB916 /* UpdateLikes.swift */; };
+		6845B97C29FEC382009BB916 /* UpdateLikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6845B97A29FEC382009BB916 /* UpdateLikes.swift */; };
+		6845B97D29FEC382009BB916 /* UpdateLikes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6845B97A29FEC382009BB916 /* UpdateLikes.swift */; };
 		686AD64829BFEEB00086440F /* AccountContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64729BFEEB00086440F /* AccountContentView.swift */; };
 		686AD64929BFEEB00086440F /* AccountContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64729BFEEB00086440F /* AccountContentView.swift */; };
 		686AD64A29BFEEB00086440F /* AccountContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686AD64729BFEEB00086440F /* AccountContentView.swift */; };
@@ -127,6 +130,7 @@
 		38EB977629EB99F7007DC5B6 /* HomeAndHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAndHeader.swift; sourceTree = "<group>"; };
 		38EB977829EBA761007DC5B6 /* AccountsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListView.swift; sourceTree = "<group>"; };
 		38EB977B29ECCFD9007DC5B6 /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
+		6845B97A29FEC382009BB916 /* UpdateLikes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLikes.swift; sourceTree = "<group>"; };
 		686AD64729BFEEB00086440F /* AccountContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountContentView.swift; sourceTree = "<group>"; };
 		686AD64B29BFEEC00086440F /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		686AD64F29BFEED20086440F /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				380A920C29F6442200547DAD /* UserData.swift */,
 				389B16D129FAE2DF004998CC /* UploadImage.swift */,
 				3884D4B429FC5ABF003F9965 /* ImagesData.swift */,
+				6845B97A29FEC382009BB916 /* UpdateLikes.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -559,6 +564,7 @@
 				686AD65529BFF0000086440F /* AccountPage.swift in Sources */,
 				3806939329B6FE2A00E503B6 /* FeedScrollView.swift in Sources */,
 				380A920D29F6442200547DAD /* UserData.swift in Sources */,
+				6845B97B29FEC382009BB916 /* UpdateLikes.swift in Sources */,
 				20E6FF2329F0238200F73A64 /* CameraView.swift in Sources */,
 				3884D4B529FC5ABF003F9965 /* ImagesData.swift in Sources */,
 				3806938B29B6F17400E503B6 /* ImageHeaderView.swift in Sources */,
@@ -575,6 +581,7 @@
 				686AD64D29BFEEC00086440F /* AccountView.swift in Sources */,
 				20B886A829BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
 				20B886AC29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
+				6845B97C29FEC382009BB916 /* UpdateLikes.swift in Sources */,
 				20B886B029BFCB0200EA71AC /* SignupPage.swift in Sources */,
 				686AD65129BFEED20086440F /* AccountHeaderView.swift in Sources */,
 				2068834A29B1441100B33E07 /* Squirrel_IOTests.swift in Sources */,
@@ -590,6 +597,7 @@
 				20B886AD29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
 				2068835429B1441100B33E07 /* Squirrel_IOUITests.swift in Sources */,
 				686AD64A29BFEEB00086440F /* AccountContentView.swift in Sources */,
+				6845B97D29FEC382009BB916 /* UpdateLikes.swift in Sources */,
 				686AD65229BFEED20086440F /* AccountHeaderView.swift in Sources */,
 				20B886A929BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
 				686AD65729BFF0000086440F /* AccountPage.swift in Sources */,

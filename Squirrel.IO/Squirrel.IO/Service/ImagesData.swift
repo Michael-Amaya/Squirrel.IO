@@ -15,7 +15,6 @@ struct ImagesData{
             .order(by: "dateUploaded", descending: true)
             .getDocuments{ snapshot, _ in
             guard let documents = snapshot?.documents else { return}
-            
             let images = documents.compactMap({ try? $0.data(as: ImageModel.self)})
             completion(images)
             

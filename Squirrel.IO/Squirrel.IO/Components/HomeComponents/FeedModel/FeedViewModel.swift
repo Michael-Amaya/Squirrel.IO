@@ -21,7 +21,7 @@ class FeedViewModel: ObservableObject{
     func fetchImages(){
         serv.fetchImages{ theseImg in
             self.img = theseImg
-            
+            print("documents ", theseImg)
             for i in 0..<theseImg.count{
                 let uid = theseImg[i].uploader
                 
@@ -31,6 +31,7 @@ class FeedViewModel: ObservableObject{
                     
                 }
             }
+            print("users", self.img)
             
             
         }
