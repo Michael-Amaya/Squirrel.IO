@@ -66,7 +66,7 @@ struct ImageHeaderView: View {
                         .foregroundColor(.white)
                     
                     //location
-                    Text("Location")
+                    Text("\(imageData.location ?? "No Location Available")")
                         .foregroundColor(.red)
                         .opacity(0.9)
                     

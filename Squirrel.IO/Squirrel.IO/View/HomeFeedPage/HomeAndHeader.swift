@@ -15,6 +15,7 @@ struct HomeAndHeader: View {
         ZStack {
             VStack(spacing: 0){
                 HomeHeaderView().environmentObject(message).environmentObject(user_info)
+                    .environmentObject(LocationManager())
                 
                 FeedScrollView()
             }
