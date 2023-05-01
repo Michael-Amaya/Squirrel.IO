@@ -33,9 +33,6 @@ struct UserData{
     
     func fetchUserWithUid(withUid uid: String, completion: @escaping(UserModel) -> Void){
         
-        //print("fetch user called on google sign in")
-
-        guard let uid = Auth.auth().currentUser?.uid else {return}
 
         Firestore.firestore().collection("users")
             .document(uid)

@@ -49,7 +49,8 @@ struct ImageContentView: View {
         VStack(spacing: 4){
             
             
-            
+            if let user = imageData.user {
+                
                 VStack(spacing: 0){
                     
                     if postedPhoto.retrievedImage != nil{
@@ -60,9 +61,16 @@ struct ImageContentView: View {
                     }
                 }
                 .onAppear{
-                    postedPhoto.retrievePhoto(imageData.url)
+                    
+                    Task{
+                        postedPhoto.retrievePhoto(imageData.url)
+                    }
 
                 }
+            }
+            
+            
+    
                 
             
             

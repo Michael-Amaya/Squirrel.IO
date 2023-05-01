@@ -10,6 +10,21 @@ import FirebaseFirestoreSwift
 
 struct ImagesData{
     
+    func fetchMostLikedImage(completion: @escaping([ImageModel]) -> Void){
+        
+        
+        Firestore.firestore().collection("images")
+            .order(by: "votes", descending: true).limit(to: 1)
+            .getDocuments{ snapshot, _ in
+                guard let documents = snapshot?.documents else {return}
+                
+                let mostLikedImage = documents.compactMap({ try? $0.data(as: ImageModel.self)})
+                
+                completion(mostLikedImage)
+
+            }
+    }
+    
     func fetchImages(completion: @escaping([ImageModel]) -> Void){
         Firestore.firestore().collection("images")
             .order(by: "dateUploaded", descending: true)
@@ -22,5 +37,7 @@ struct ImagesData{
             
         }
     }
+    
+    
     
 }
