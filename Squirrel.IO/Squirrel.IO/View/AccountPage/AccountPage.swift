@@ -11,12 +11,14 @@ struct AccountPage: View {
     @EnvironmentObject var auth_status: AuthStatus
     
     var body: some View {
-        ZStack {
-            Color.yellow.ignoresSafeArea()
-            VStack(spacing:10) {
-                //AccountHeaderView()           got rid of upper left Log Out
-                AccountView()
-                AccountsListView().environmentObject(auth_status)
+        NavigationView {
+            ZStack {
+                Color.yellow.ignoresSafeArea()
+                VStack(spacing:10) {
+                    //AccountHeaderView()           got rid of upper left Log Out
+                    AccountView()
+                    AccountsListView().environmentObject(auth_status)
+                }
             }
         }
     }

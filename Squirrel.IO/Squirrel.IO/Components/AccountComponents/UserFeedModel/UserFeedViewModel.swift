@@ -1,14 +1,14 @@
 //
-//  FeedViewModel.swift
+//  UserFeedViewModel.swift
 //  Squirrel.IO
 //
-//  Created by Fabrizzio Perez on 4/28/23.
+//  Created by Andrew Hong on 5/1/23.
 //
 
-import Foundation
+import Firebase
+import FirebaseFirestoreSwift
 
-
-class FeedViewModel: ObservableObject{
+class UserFeedViewModel: ObservableObject{
     @Published var img = [ImageModel]()
     
     let serv = ImagesData()
@@ -19,7 +19,8 @@ class FeedViewModel: ObservableObject{
     }
     
     func fetchImages(){
-        serv.fetchImages{ theseImg in
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        serv.fetchImagesUser(uploader: uid){ theseImg in
             self.img = theseImg
             for i in 0..<theseImg.count{
                 let uid = theseImg[i].uploader
