@@ -47,6 +47,9 @@
 		3806939D29B7061A00E503B6 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3806939C29B7061A00E503B6 /* LaunchScreen.swift */; };
 		380A920D29F6442200547DAD /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380A920C29F6442200547DAD /* UserData.swift */; };
 		380A920F29F654E200547DAD /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380A920E29F654E200547DAD /* UserModel.swift */; };
+		380B9FA129FF498600693A69 /* PostOfDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380B9FA029FF498600693A69 /* PostOfDayView.swift */; };
+		380B9FA329FF4C4400693A69 /* PostOfDayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380B9FA229FF4C4400693A69 /* PostOfDayHeader.swift */; };
+		380B9FA629FF5A4600693A69 /* PostOfDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380B9FA529FF5A4600693A69 /* PostOfDayViewModel.swift */; };
 		3884D4B529FC5ABF003F9965 /* ImagesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3884D4B429FC5ABF003F9965 /* ImagesData.swift */; };
 		3884D4B729FC5C4B003F9965 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3884D4B629FC5C4B003F9965 /* ImageModel.swift */; };
 		3884D4BA29FC6190003F9965 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3884D4B929FC6190003F9965 /* FeedViewModel.swift */; };
@@ -124,6 +127,9 @@
 		3806939C29B7061A00E503B6 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		380A920C29F6442200547DAD /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		380A920E29F654E200547DAD /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		380B9FA029FF498600693A69 /* PostOfDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOfDayView.swift; sourceTree = "<group>"; };
+		380B9FA229FF4C4400693A69 /* PostOfDayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOfDayHeader.swift; sourceTree = "<group>"; };
+		380B9FA529FF5A4600693A69 /* PostOfDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOfDayViewModel.swift; sourceTree = "<group>"; };
 		3884D4B429FC5ABF003F9965 /* ImagesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesData.swift; sourceTree = "<group>"; };
 		3884D4B629FC5C4B003F9965 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		3884D4B929FC6190003F9965 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 		3806937D29B6E1D400E503B6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				380B9F9D29FF488800693A69 /* PostOfDayComponents */,
 				20E6FF2429F03FE600F73A64 /* MessageComponents */,
 				38EB977A29ECCFA9007DC5B6 /* PostingComponents */,
 				686AD64629BFEE320086440F /* AccountComponents */,
@@ -331,6 +338,24 @@
 				3884D4B629FC5C4B003F9965 /* ImageModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		380B9F9D29FF488800693A69 /* PostOfDayComponents */ = {
+			isa = PBXGroup;
+			children = (
+				380B9FA429FF5A2B00693A69 /* PostOfDayModel */,
+				380B9FA229FF4C4400693A69 /* PostOfDayHeader.swift */,
+				380B9FA029FF498600693A69 /* PostOfDayView.swift */,
+			);
+			path = PostOfDayComponents;
+			sourceTree = "<group>";
+		};
+		380B9FA429FF5A2B00693A69 /* PostOfDayModel */ = {
+			isa = PBXGroup;
+			children = (
+				380B9FA529FF5A4600693A69 /* PostOfDayViewModel.swift */,
+			);
+			path = PostOfDayModel;
 			sourceTree = "<group>";
 		};
 		3884D4B829FC616C003F9965 /* FeedModel */ = {
@@ -557,14 +582,17 @@
 				20B886A729BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
 				3806937F29B6E28700E503B6 /* HomeHeaderView.swift in Sources */,
 				20B886AB29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
+				380B9FA629FF5A4600693A69 /* PostOfDayViewModel.swift in Sources */,
 				2068833929B1440F00B33E07 /* Squirrel_IOApp.swift in Sources */,
 				686AD65029BFEED20086440F /* AccountHeaderView.swift in Sources */,
 				20E6FF2629F0400400F73A64 /* MessageView.swift in Sources */,
 				3806939129B6FDF200E503B6 /* HomePage.swift in Sources */,
+				380B9FA329FF4C4400693A69 /* PostOfDayHeader.swift in Sources */,
 				38A6A69929B5D18A00539900 /* SettingsPage.swift in Sources */,
 				380A920F29F654E200547DAD /* UserModel.swift in Sources */,
 				20B886AF29BFCB0200EA71AC /* SignupPage.swift in Sources */,
 				3806938F29B6F2FA00E503B6 /* PostView.swift in Sources */,
+				380B9FA129FF498600693A69 /* PostOfDayView.swift in Sources */,
 				3884D4B729FC5C4B003F9965 /* ImageModel.swift in Sources */,
 				3884D4BA29FC6190003F9965 /* FeedViewModel.swift in Sources */,
 				686AD65529BFF0000086440F /* AccountPage.swift in Sources */,

@@ -25,9 +25,14 @@ struct HomePage: View {
             TabView {
                 HomeAndHeader().environmentObject(message).environmentObject(user_info)
                     .tabItem {Image(systemName: "house")}
+                
+                PostOfDayView()
+                    .tabItem {Image(systemName: "star.square.fill")}
         
                 AccountPage().environmentObject(auth_status).environmentObject(message)
                     .tabItem {Image(systemName: "person.crop.circle")}
+                
+                
             }
             //currently tab background not saving??
             .onAppear{
