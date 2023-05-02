@@ -79,6 +79,12 @@
 		686BB49F29FF303F00678ADF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB49E29FF303F00678ADF /* LocationManager.swift */; };
 		686BB4A029FF303F00678ADF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB49E29FF303F00678ADF /* LocationManager.swift */; };
 		686BB4A129FF303F00678ADF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB49E29FF303F00678ADF /* LocationManager.swift */; };
+		686BB4B62A00D98F00678ADF /* UserFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB4B52A00D98F00678ADF /* UserFeedViewModel.swift */; };
+		686BB4B72A00D98F00678ADF /* UserFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB4B52A00D98F00678ADF /* UserFeedViewModel.swift */; };
+		686BB4B82A00D98F00678ADF /* UserFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB4B52A00D98F00678ADF /* UserFeedViewModel.swift */; };
+		686BB4BA2A00DB7300678ADF /* UserFeedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB4B92A00DB7300678ADF /* UserFeedScrollView.swift */; };
+		686BB4BB2A00DB7300678ADF /* UserFeedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB4B92A00DB7300678ADF /* UserFeedScrollView.swift */; };
+		686BB4BC2A00DB7300678ADF /* UserFeedScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686BB4B92A00DB7300678ADF /* UserFeedScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +151,8 @@
 		686AD64F29BFEED20086440F /* AccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHeaderView.swift; sourceTree = "<group>"; };
 		686AD65429BFF0000086440F /* AccountPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPage.swift; sourceTree = "<group>"; };
 		686BB49E29FF303F00678ADF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		686BB4B52A00D98F00678ADF /* UserFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewModel.swift; sourceTree = "<group>"; };
+		686BB4B92A00DB7300678ADF /* UserFeedScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -404,10 +412,12 @@
 		686AD64629BFEE320086440F /* AccountComponents */ = {
 			isa = PBXGroup;
 			children = (
+				686BB4B42A00D97200678ADF /* UserFeedModel */,
 				686AD64729BFEEB00086440F /* AccountContentView.swift */,
 				686AD64B29BFEEC00086440F /* AccountView.swift */,
 				686AD64F29BFEED20086440F /* AccountHeaderView.swift */,
 				38EB977829EBA761007DC5B6 /* AccountsListView.swift */,
+				686BB4B92A00DB7300678ADF /* UserFeedScrollView.swift */,
 			);
 			path = AccountComponents;
 			sourceTree = "<group>";
@@ -418,6 +428,14 @@
 				686AD65429BFF0000086440F /* AccountPage.swift */,
 			);
 			path = AccountPage;
+			sourceTree = "<group>";
+		};
+		686BB4B42A00D97200678ADF /* UserFeedModel */ = {
+			isa = PBXGroup;
+			children = (
+				686BB4B52A00D98F00678ADF /* UserFeedViewModel.swift */,
+			);
+			path = UserFeedModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,6 +606,7 @@
 				20E6FF2629F0400400F73A64 /* MessageView.swift in Sources */,
 				3806939129B6FDF200E503B6 /* HomePage.swift in Sources */,
 				380B9FA329FF4C4400693A69 /* PostOfDayHeader.swift in Sources */,
+				686BB4BA2A00DB7300678ADF /* UserFeedScrollView.swift in Sources */,
 				38A6A69929B5D18A00539900 /* SettingsPage.swift in Sources */,
 				380A920F29F654E200547DAD /* UserModel.swift in Sources */,
 				20B886AF29BFCB0200EA71AC /* SignupPage.swift in Sources */,
@@ -603,6 +622,7 @@
 				3884D4B529FC5ABF003F9965 /* ImagesData.swift in Sources */,
 				3806938B29B6F17400E503B6 /* ImageHeaderView.swift in Sources */,
 				38EB977929EBA761007DC5B6 /* AccountsListView.swift in Sources */,
+				686BB4B62A00D98F00678ADF /* UserFeedViewModel.swift in Sources */,
 				3890D43229C2DFB700C74698 /* ImageCommentView.swift in Sources */,
 				686AD64829BFEEB00086440F /* AccountContentView.swift in Sources */,
 			);
@@ -616,7 +636,9 @@
 				20B886A829BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
 				686BB4A029FF303F00678ADF /* LocationManager.swift in Sources */,
 				20B886AC29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
+				686BB4BB2A00DB7300678ADF /* UserFeedScrollView.swift in Sources */,
 				6845B97C29FEC382009BB916 /* UpdateLikes.swift in Sources */,
+				686BB4B72A00D98F00678ADF /* UserFeedViewModel.swift in Sources */,
 				20B886B029BFCB0200EA71AC /* SignupPage.swift in Sources */,
 				686AD65129BFEED20086440F /* AccountHeaderView.swift in Sources */,
 				2068834A29B1441100B33E07 /* Squirrel_IOTests.swift in Sources */,
@@ -629,6 +651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				686BB4BC2A00DB7300678ADF /* UserFeedScrollView.swift in Sources */,
 				20B886AD29BFCAEA00EA71AC /* LoginPage.swift in Sources */,
 				2068835429B1441100B33E07 /* Squirrel_IOUITests.swift in Sources */,
 				686AD64A29BFEEB00086440F /* AccountContentView.swift in Sources */,
@@ -638,6 +661,7 @@
 				20B886A929BFCAC900EA71AC /* LabelledDivider.swift in Sources */,
 				686AD65729BFF0000086440F /* AccountPage.swift in Sources */,
 				686AD64E29BFEEC00086440F /* AccountView.swift in Sources */,
+				686BB4B82A00D98F00678ADF /* UserFeedViewModel.swift in Sources */,
 				2068835629B1441100B33E07 /* Squirrel_IOUITestsLaunchTests.swift in Sources */,
 				20B886B129BFCB0200EA71AC /* SignupPage.swift in Sources */,
 			);
