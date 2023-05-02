@@ -10,15 +10,26 @@ import SwiftUI
 struct AccountPage: View {
     @EnvironmentObject var auth_status: AuthStatus
     
+    init() {
+        let backgroundColor = UIColor(ciColor: .clear)
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithTransparentBackground()
+        appearance.backgroundColor = backgroundColor
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    }
     var body: some View {
-        ZStack {
-            Color.yellow.ignoresSafeArea()
-            VStack(spacing:10) {
-                //AccountHeaderView()           got rid of upper left Log Out
-                AccountView()
-                AccountsListView().environmentObject(auth_status)
+        NavigationView {
+            ZStack {
+                Color.yellow.ignoresSafeArea()
+                VStack(spacing:10) {
+                    //AccountHeaderView()           got rid of upper left Log Out
+                    AccountView()
+                    AccountsListView().environmentObject(auth_status)
+                }
             }
-        }
+        }.ignoresSafeArea()
     }
 }
 

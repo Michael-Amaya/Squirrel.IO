@@ -27,82 +27,87 @@ struct AccountsListViewSecond: View {
     @State private var signOutAlert = false
     
     var body: some View {
-        NavigationView{
-            List{
-                
-                //personal menu
-                Section(header: Text("Personal")){
-                    
-                    //currently buttons only work on text
-                    Button{
-                        
-                    } label: {
-                        Text("Edit Profile")
-                    }.buttonStyle(.borderless)
-                    
-                    Button{
-                        
-                    } label: {
-                        Text("My Posts")
-                    }.buttonStyle(.borderless)
-                    
-                        
-                }
-                
-                //community menu
-                Section(header: Text("Community")){
-                    Link(
-                        "Send Feedback",
-                        destination: URL(string: "https://www.apple.com")!
-                    
-                    )
-                    
-                    //currently buttons only work on text
-                    Button{
-                        
-                    } label: {
-                        Text("Share Squirrel.io")
-                    }.buttonStyle(.borderless)
-                        
-                }
-        
-                
-                //Log out button
-                Button{
-                    signOutAlert = true
-                } label: {
-                    Text("Log Out").foregroundColor(.red)
-                }
-                .buttonStyle(.borderless)
-                .alert(isPresented: $signOutAlert){
-                    Alert(
-                        title: Text("Log Out"),
-                        message: Text("Are you sure you want to log out?"),
-                        primaryButton: .destructive(Text("Log Out")){
-                            do {
-                                try Auth.auth().signOut()
-                                auth_status.current_status = .unauthenticated
-                            } catch let signOutError as NSError {
-                                print("Error logging out")
-                            }
-                        },
-                        secondaryButton: .cancel()
-                            
-                    
-                    
-                    )
-                }
-            }
-            .listStyle(.grouped)
+        //        NavigationView{
+        List{
             
-            Spacer()
+            //personal menu
+            Section(header: Text("Personal")){
+                
+                //currently buttons only work on text
+                Button{
+                    
+                } label: {
+                    Text("Edit Profile")
+                }.buttonStyle(.borderless)
+                
+                
+//                NavigationLink(destination: UserFeedScrollView()) {
+                    Text("My Posts").foregroundColor(Color.blue)
+                        .background( NavigationLink("", destination: UserFeedScrollView()).opacity(0) )
+//                }.buttonStyle(PlainButtonStyle())
+                //                    Button{
+                //
+                //                    } label: {
+                //                        Text("My Posts")
+                //                    }.buttonStyle(.borderless)
+                
+                
+            }
+            
+            //community menu
+            Section(header: Text("Community")){
+                Link(
+                    "Send Feedback",
+                    destination: URL(string: "https://www.apple.com")!
+                    
+                )
+                
+                //currently buttons only work on text
+                Button{
+                    
+                } label: {
+                    Text("Share Squirrel.io")
+                }.buttonStyle(.borderless)
+                
+            }
+            
+            
+            //Log out button
+            Button{
+                signOutAlert = true
+            } label: {
+                Text("Log Out").foregroundColor(.red)
+            }
+            .buttonStyle(.borderless)
+            .alert(isPresented: $signOutAlert){
+                Alert(
+                    title: Text("Log Out"),
+                    message: Text("Are you sure you want to log out?"),
+                    primaryButton: .destructive(Text("Log Out")){
+                        do {
+                            try Auth.auth().signOut()
+                            auth_status.current_status = .unauthenticated
+                        } catch let signOutError as NSError {
+                            print("Error logging out")
+                        }
+                    },
+                    secondaryButton: .cancel()
+                    
+                    
+                    
+                )
+            }
         }
+        .listStyle(.grouped)
         
-        
+//        Spacer()
     }
     
     
 }
+    
+    
+
 
 struct AccountsListView_Previews: PreviewProvider {
     static var previews: some View {
