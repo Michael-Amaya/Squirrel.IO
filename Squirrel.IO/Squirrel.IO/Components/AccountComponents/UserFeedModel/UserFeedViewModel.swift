@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 class UserFeedViewModel: ObservableObject{
     @Published var img = [ImageModel]()
@@ -18,7 +19,9 @@ class UserFeedViewModel: ObservableObject{
     }
     
     func fetchImages(){
-        serv.fetchImagesUser{ theseImg in
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+
+        serv.fetchImagesUser(withUid: uid){ theseImg in
             self.img = theseImg
             print("documents ", theseImg)
             for i in 0..<theseImg.count{
