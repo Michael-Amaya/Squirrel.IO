@@ -9,11 +9,13 @@
 //
 
 import SwiftUI
-
+import FirebaseAuth
+import FirebaseFirestore
 
 struct ImageHeaderView: View {
     
     @ObservedObject var userProfilePic: PhotoRetrieve = PhotoRetrieve()
+    @EnvironmentObject var postDeleted: ObserveDelete
     
     let imageData: ImageModel
     
@@ -74,21 +76,42 @@ struct ImageHeaderView: View {
                 
                 Spacer()
                 
-                
-                //report button
-                Button{
-                    //action here
-                }label: {
-                    //will be report ...
-                    Image(systemName: "ellipsis")
-                        .font(.system(size: 20)).foregroundColor(.white)
+                if imageData.uploader == Auth.auth().currentUser!.uid {
+                    //report button
+//                    Button{
+//
+//                    }label: {
+//                        //will be report ...
+//                        Image(systemName: "trash.fill")
+//                            .font(.system(size: 20)).foregroundColor(.white)
+//                    }
+                    Button(action: deletePost(imageData)) {
+                        Image(systemName: "trash.fill")
+                            .font(.system(size: 20)).foregroundColor(.white)
+                    }
                 }
+                
             }
             .padding(.horizontal, 10)
             .padding(.vertical, 8)
         }
         
         
+    }
+    
+    func deletePost(_ image: ImageModel) -> () -> Void {
+        return {
+            let db = Firestore.firestore()
+            db.collection("images").document(image.id!).delete() { err in
+                if let err = err {
+                    print("Error deleting document: \(err)")
+                    return
+                }
+                
+                postDeleted.deleted = true
+                print("Document Deleted!")
+            }
+        }
     }
 }
 

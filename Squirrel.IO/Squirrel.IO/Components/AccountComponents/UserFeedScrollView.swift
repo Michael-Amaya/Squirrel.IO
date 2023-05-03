@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct UserFeedScrollView: View {
     @ObservedObject var viewModel = UserFeedViewModel()
