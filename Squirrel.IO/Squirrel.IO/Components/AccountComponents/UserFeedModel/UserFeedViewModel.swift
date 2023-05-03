@@ -38,5 +38,14 @@ class UserFeedViewModel: ObservableObject{
             
         }
     }
+    
+    func removeImage(id: String) {
+        for i in img.indices {
+            if img[i].id! == id {
+                img.remove(at: i)
+                break
+            }
+        }
+    }
 }
 
