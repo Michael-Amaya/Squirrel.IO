@@ -39,8 +39,7 @@ struct ImagesData{
         }
     }
     
-    func fetchImagesUser(completion: @escaping([ImageModel]) -> Void){
-        let currentUser = Auth.auth().currentUser!.uid
+    func fetchImagesUser(withUid currentUser: String, completion: @escaping([ImageModel]) -> Void){
         Firestore.firestore().collection("images")
             .whereField("uploader", isEqualTo: currentUser)
             .getDocuments{ snapshot, _ in

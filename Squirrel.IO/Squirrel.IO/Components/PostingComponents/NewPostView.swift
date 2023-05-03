@@ -132,7 +132,7 @@ struct NewPostView: View {
         
         // First upload the file
         let storageRef = Storage.storage().reference()
-        let imageData = selectedImage!.jpegData(compressionQuality: 0.8)
+        let imageData = selectedImage!.jpegData(compressionQuality: 0.5)
         
         guard imageData != nil else {
             return

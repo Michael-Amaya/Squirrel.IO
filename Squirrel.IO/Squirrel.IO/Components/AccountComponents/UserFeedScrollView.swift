@@ -11,15 +11,31 @@ struct UserFeedScrollView: View {
     @ObservedObject var viewModel = UserFeedViewModel()
     
     var body: some View {
-        ScrollView{
-            LazyVStack(spacing: 0){
-                ForEach(viewModel.img){ imgData in
-                    PostView(imageData: imgData)
-                }
+        VStack(spacing: 0){
+            HStack{
+                //text
+                Text("My Posts")
+                    .bold()
+                    .font(Font.custom("AmericanTypewriter", size: 22))
+                    .frame(alignment: .center)
+            }
+            .padding(.vertical, 10)             //vertical padding for hstack
+            .frame(maxWidth: .infinity)
+            .background{
+                LinearGradient(gradient: Gradient(colors: [.orange.opacity(0.7), .yellow]), startPoint: .topLeading, endPoint: .bottomLeading)
+                    .ignoresSafeArea()
             }
             
-        }.background(Color.black.opacity(0.9))
-            //scroll view background color
+            ScrollView{
+                LazyVStack(spacing: 0){
+                    ForEach(viewModel.img){ imgData in
+                        PostView(imageData: imgData)
+                    }
+                }
+                
+            }.background(Color.black.opacity(0.9))
+                //scroll view background color
+        }
         
         
     }

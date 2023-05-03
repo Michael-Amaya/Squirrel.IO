@@ -38,7 +38,7 @@ struct AccountsListViewSecond: View {
                     
                 } label: {
                     Text("Edit Profile")
-                }.buttonStyle(.borderless)
+                }
                 
                 
 //                NavigationLink(destination: UserFeedScrollView()) {
@@ -67,36 +67,39 @@ struct AccountsListViewSecond: View {
                     
                 } label: {
                     Text("Share Squirrel.io")
-                }.buttonStyle(.borderless)
+                }
                 
             }
             
+            Section{
+                //Log out button
+                Button("Log Out"){
+                    signOutAlert = true
+                }
+                .foregroundColor(.red)
+                //buttonStyle(.borderless)
+                .alert(isPresented: $signOutAlert){
+                    Alert(
+                        title: Text("Log Out"),
+                        message: Text("Are you sure you want to log out?"),
+                        primaryButton: .destructive(Text("Log Out")){
+                            do {
+                                try Auth.auth().signOut()
+                                auth_status.current_status = .unauthenticated
+                            } catch let signOutError as NSError {
+                                print("Error logging out")
+                            }
+                        },
+                        secondaryButton: .cancel()
+                        
+                        
+                        
+                    )
+                }
+            }
             
-            //Log out button
-            Button{
-                signOutAlert = true
-            } label: {
-                Text("Log Out").foregroundColor(.red)
-            }
-            .buttonStyle(.borderless)
-            .alert(isPresented: $signOutAlert){
-                Alert(
-                    title: Text("Log Out"),
-                    message: Text("Are you sure you want to log out?"),
-                    primaryButton: .destructive(Text("Log Out")){
-                        do {
-                            try Auth.auth().signOut()
-                            auth_status.current_status = .unauthenticated
-                        } catch let signOutError as NSError {
-                            print("Error logging out")
-                        }
-                    },
-                    secondaryButton: .cancel()
-                    
-                    
-                    
-                )
-            }
+            
+            
         }
         .listStyle(.grouped)
         
