@@ -11,22 +11,28 @@
 
 import SwiftUI
 
+class ObserveDelete:ObservableObject {
+    @Published var deleted:Bool = false
+}
+
 struct PostView: View {
     let imageData: ImageModel
+    @ObservedObject var postDeleted:ObserveDelete = ObserveDelete()
     
     var body: some View {
         
-        
-        //combine the header and content to create ONE actual Squirrel.io post
-        VStack(spacing: 0){
-            ImageHeaderView(imageData: self.imageData)
-            ImageCommentView(imageData: self.imageData)  //not to get confused with Content!
-            ImageContentView(imageData: self.imageData)
+        if !postDeleted.deleted {
+            //combine the header and content to create ONE actual Squirrel.io post
+            VStack(spacing: 0){
+                ImageHeaderView(imageData: self.imageData).environmentObject(postDeleted)
+                ImageCommentView(imageData: self.imageData)  //not to get confused with Content!
+                ImageContentView(imageData: self.imageData)
+            }
+            .padding(.vertical, 10)
+            .background(Color(red: 0.11, green: 0.11, blue: 0.11).opacity(1))
+            
+            Divider().overlay(Color.yellow)              //divider
         }
-        .padding(.vertical, 10)
-        .background(Color(red: 0.11, green: 0.11, blue: 0.11).opacity(1))
-        
-        Divider().overlay(Color.yellow)              //divider
     }
 }
 

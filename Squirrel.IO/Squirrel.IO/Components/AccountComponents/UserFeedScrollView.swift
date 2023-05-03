@@ -30,14 +30,6 @@ struct UserFeedScrollView: View {
             ScrollView{
                 LazyVStack(spacing: 0){
                     ForEach(viewModel.img){ imgData in
-                        HStack {
-                            Button(action: deletePost(imgData)) {
-                                Text("Delete").foregroundColor(.white).padding(.horizontal, 10).padding(.vertical, 3)
-                            }.padding(.vertical, 5).background {
-                                RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)
-                            }
-                            Spacer()
-                        }
                         PostView(imageData: imgData)
                     }
                 }
@@ -47,21 +39,6 @@ struct UserFeedScrollView: View {
         }
         
         
-    }
-    
-    func deletePost(_ image: ImageModel) -> () -> Void {
-        return {
-            let db = Firestore.firestore()
-            db.collection("images").document(image.id!).delete() { err in
-                if let err = err {
-                    print("Error deleting document: \(err)")
-                    return
-                }
-                viewModel.removeImage(id: image.id!)
-                
-                print("Document Deleted!")
-            }
-        }
     }
 }
 
