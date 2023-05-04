@@ -16,6 +16,7 @@ struct AccountContentView: View {
     //@State private var retrievedImage: UIImage?
     
     @ObservedObject var photoRetrieve: PhotoRetrieve = PhotoRetrieve()
+
     
     var body: some View {
         
@@ -69,7 +70,10 @@ struct AccountContentView: View {
             .padding(.vertical, 5)             //vertical padding for hstack
             .padding(.horizontal, 15)           //horizontal padding for
             .onAppear{
-                photoRetrieve.retrievePhoto(curr.profileImageUrl)
+                Task{
+                    photoRetrieve.retrievePhoto(curr.profileImageUrl)
+                }
+                
             }
         }
 //        else{

@@ -70,7 +70,7 @@ struct LoginPageView: View {
                     .bold()
                     .foregroundColor(.black.opacity(0.9))
                 VStack {
-                    TextField("Username", text:$usernameText).autocorrectionDisabled(true).autocapitalization(.none)
+                    TextField("Email", text:$usernameText).autocorrectionDisabled(true).autocapitalization(.none)
                     SecureField("Password", text:$passwordText)
                     Button("Log in", action: perform_login).frame(minWidth: 0, maxWidth: .infinity).buttonStyle(.borderedProminent)
                 }.textFieldStyle(RoundedBorderTextFieldStyle())
@@ -89,6 +89,8 @@ struct LoginPageView: View {
 //                        RoundedRectangle(cornerRadius: 10, style: .continuous).fill(.black)
 //                    }.clipped()
                     
+                    
+                    /*
                     HStack {
                         SignInWithAppleButton { request in
                             handleSignInWithAppleRequest(request)
@@ -98,6 +100,7 @@ struct LoginPageView: View {
                     }.padding(.horizontal,15).padding(.vertical, 3).background {
                         RoundedRectangle(cornerRadius: 10, style: .continuous).fill(.black)
                     }.clipped()
+                     */
                     
                     HStack {
                         Button(action: perform_google_login) {
@@ -139,6 +142,7 @@ struct LoginPageView: View {
         
     }
     
+    /*
     func handleSignInWithAppleRequest(_ request: ASAuthorizationAppleIDRequest)  {
         request.requestedScopes = [.fullName, .email]
         let nonce = randomNonceString()
@@ -179,6 +183,7 @@ struct LoginPageView: View {
             }
         }
     }
+    */
     
     func signInWithGoogle() async {
         guard let clientID = FirebaseApp.app()?.options.clientID else {
@@ -278,7 +283,16 @@ struct LoginPageView: View {
         auth_status.current_status = .authenticating
         do {
             let result = try await Auth.auth().signIn(withEmail: usernameText, password: passwordText)
-            user_info.user = result.user
+            Task{
+                do{
+
+                    await service.fetchUser(){ user in
+                        self.user_info.current_user = user
+                        
+                    }
+                }
+
+            }
             print("User \(result.user.uid) signed in")
             auth_status.current_status = .authenticated
         } catch {
