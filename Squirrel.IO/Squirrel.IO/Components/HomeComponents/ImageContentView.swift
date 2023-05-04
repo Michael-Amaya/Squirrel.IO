@@ -87,6 +87,7 @@ struct ImageContentView: View {
             //upvote/downvote buttons, comment button, and share button
             HStack{
                 
+                /*
                 //number of comments
                 Text("0")
                     .foregroundColor(.yellow)
@@ -109,6 +110,8 @@ struct ImageContentView: View {
                     Image(systemName: "location.fill")
                         .font(.system(size: 25)).foregroundColor(.green)
                 }
+                
+                */
                 
                 Spacer()
                 

@@ -33,12 +33,16 @@ struct AccountsListViewSecond: View {
             //personal menu
             Section(header: Text("Personal")){
                 
+                /*
+                
                 //currently buttons only work on text
                 Button{
                     
                 } label: {
                     Text("Edit Profile")
                 }
+                 
+                 */
                 
                 
 //                NavigationLink(destination: UserFeedScrollView()) {
@@ -57,19 +61,22 @@ struct AccountsListViewSecond: View {
             //community menu
             Section(header: Text("Community")){
                 Link(
-                    "Send Feedback",
-                    destination: URL(string: "https://www.apple.com")!
+                    "See repository",
+                    destination: URL(string: "https://github.com/Michael-Amaya/CMSC-436-Group-Project")!
                     
                 )
                 
+                /*
                 //currently buttons only work on text
                 Button{
                     
                 } label: {
                     Text("Share Squirrel.io")
                 }
+                 */
                 
             }
+            
             
             Section{
                 //Log out button
