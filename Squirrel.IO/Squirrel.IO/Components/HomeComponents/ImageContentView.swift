@@ -20,6 +20,8 @@ struct ImageContentView: View {
     
     let imageData: ImageModel
     
+    @State private var hasUpvoted = false
+    @State private var hasDownvoted = false
     @State private var votes: Int
     
     init (imageData:ImageModel) {
@@ -116,8 +118,24 @@ struct ImageContentView: View {
                 Spacer()
                 
                 //upvote button
-                Button{
-                    votes += 1
+                Button {
+                    if hasUpvoted {
+                        // undo upvote
+                        votes -= 1
+                        hasUpvoted = false
+                    } else {
+                        if hasDownvoted {
+                            // switch from downvote to upvote
+                            votes += 2
+                            hasUpvoted = true
+                            hasDownvoted = false
+                        } else {
+                            // regular upvote
+                            votes += 1
+                            hasUpvoted = true
+                        }
+                    }
+                    
                     let db = Firestore.firestore()
                     db.collection("images").document("\(imageData.id!)").updateData([
                         "votes": votes
@@ -126,12 +144,19 @@ struct ImageContentView: View {
                             print("Error updating document: \(err)")
                         }
                     }
-                    //action
-                }label: {
-                    //upvote button image
+                } label: {
+                    /*
                     Image(systemName: "arrow.up.square.fill")
-                        .font(.system(size: 30)).foregroundColor(.blue)
+                        .font(.system(size: 30)).foregroundColor(hasUpvoted ? .gray : .blue)
+                     */
+                    Image(systemName: hasUpvoted ? "hand.thumbsup.fill" : "hand.thumbsup")
+                            .font(.system(size: 20))
+                            .foregroundColor(hasUpvoted ? Color.blue.opacity(0.8) : Color.gray.opacity(0.5))
+                            .frame(width: 44, height: 44)
+                            .background(hasUpvoted ? Color.blue.opacity(0.2) : Color.clear)
+                            .cornerRadius(8)
                 }
+                //.disabled(hasUpvoted)
 //                imageData.
                 //vote ratio
                 //this should ultimately be a bool that can turn red
@@ -139,26 +164,39 @@ struct ImageContentView: View {
                     .foregroundColor(votes >= 0 ? .blue : .red)
                 
                 //downvote button
-                Button{
-                    votes -= 1
-                    //action
-                    let db = Firestore.firestore()
-                    db.collection("images").document("\(imageData.id!)").updateData([
-                        "votes": votes
-                    ]) { err in
-                        if let err = err {
-                            print("Error updating document: \(err)")
+                Button {
+                    if hasDownvoted {
+                        // undo downvote
+                        votes += 1
+                        hasDownvoted = false
+                    } else {
+                        if hasUpvoted {
+                            // switch from upvote to downvote
+                            votes -= 2
+                            hasDownvoted = true
+                            hasUpvoted = false
+                        } else {
+                            // regular downvote
+                            votes -= 1
+                            hasDownvoted = true
                         }
                     }
-                }label: {
-                    //downvote button image
+                } label: {
+                    /*
                     Image(systemName: "arrow.down.square.fill")
-                        .font(.system(size: 30)).foregroundColor(.red)
+                        .font(.system(size: 30)).foregroundColor(hasDownvoted ? .gray : .red)
+                     */
+                    Image(systemName: hasDownvoted ? "hand.thumbsdown.fill" : "hand.thumbsdown")
+                            .font(.system(size: 20))
+                            .foregroundColor(hasDownvoted ? Color.red.opacity(0.8) : Color.gray.opacity(0.5))
+                            .frame(width: 44, height: 44)
+                            .background(hasDownvoted ? Color.red.opacity(0.2) : Color.clear)
+                            .cornerRadius(8)
                 }
+                //.disabled(hasDownvoted)
                 
                 
-                
-                
+
             }
             .padding(.horizontal, 6)
             .padding(.vertical, 6)
@@ -174,4 +212,3 @@ struct ImageContentView: View {
 //        ImageContentView()
 //    }
 //}
-
