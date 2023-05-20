@@ -11,7 +11,8 @@
 
 Squirrel.IO is a social media app intended for users to post and share pictures of squrriels and other animals found on the University of Maryland campus. Our app celebrates the charismatic squirrels that have become iconic figures on campus, captivating the hearts of students and faculty alike. With Squirrel.IO, users can immerse themselves in a dedicated social network tailored to these adorable creatures.
 
-##Implementation
+## Implementation
+
 Built with Swift and SwiftUI, Squirrel.IO delivers a modern and intuitive user interface. The app seamlessly integrates with the native iOS experience, providing a smooth and enjoyable user journey. Leveraging the power of SwiftUI, Squirrel.IO offers dynamic layouts, animations, and responsive design, ensuring a visually pleasing and immersive experience for users.
 
 Squirrel.IO utilizes Firebase as the backend infrastructure, empowering the app with secure user authentication and data storage capabilities. Firebase serves as the foundation for storing user account information, including usernames, profile pictures, and securely managing passwords. Additionally, Firebase Storage is employed to house the uploaded images and captions, ensuring reliable and efficient content delivery.
